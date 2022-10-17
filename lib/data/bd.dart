@@ -99,8 +99,10 @@ class BD {
     )
   ];
 
-  static Future<List<Questoes>> getCardQuestoes() async {
+  static Future<List<Questoes>> getQuestoes() async {
+    print("ANTES");
     await Future.delayed(const Duration(seconds: 10));
+    print("DEPOIS");
     return lista;
   }
 

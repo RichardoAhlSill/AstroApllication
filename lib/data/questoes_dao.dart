@@ -8,7 +8,7 @@ class QuestoesDao {
     DBHelper dbHelper = DBHelper();
     Database db = await dbHelper.initDB();
 
-    String sqlquestion = "SELECT * FROM QUESTOES:";
+    String sqlquestion = "SELECT * FROM QUESTOES;";
     final result = await db.rawQuery(sqlquestion);
 
     List<Questoes> lista = <Questoes>[];
