@@ -17,6 +17,9 @@ class CardQuestoes extends StatefulWidget {
 class _CardQuestoesState extends State<CardQuestoes> {
   @override
   Widget build(BuildContext context) {
+
+    Size size = MediaQuery.of(context).size;
+
     return InkWell(
       child: Card(
         shape: RoundedRectangleBorder(

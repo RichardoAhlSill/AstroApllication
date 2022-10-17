@@ -18,7 +18,7 @@ class Questoes {
   });
 
   Map<String, Object?> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = new Map<String, dynamic>();
 
     data['imagem'] = imagem;
     data['titulo'] = titulo;
