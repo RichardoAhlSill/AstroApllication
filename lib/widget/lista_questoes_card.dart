@@ -18,8 +18,6 @@ class _CardQuestoesState extends State<CardQuestoes> {
   @override
   Widget build(BuildContext context) {
 
-    Size size = MediaQuery.of(context).size;
-
     return InkWell(
       child: Card(
         shape: RoundedRectangleBorder(
@@ -33,6 +31,7 @@ class _CardQuestoesState extends State<CardQuestoes> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+
                     Text(
                       widget.questoes.titulo,
                       style: const TextStyle(
@@ -40,18 +39,17 @@ class _CardQuestoesState extends State<CardQuestoes> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 8),
+
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF0F2179),
                       ),
                       onPressed: (){
-                        acertouMensagem(context);
+                        verificarResposta(1);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 10.0,
-                            horizontal: 140.0,
+                          horizontal: 140.0,
                         ),
                         child: Text(
                           widget.questoes.alternativa1,
@@ -63,17 +61,15 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       ),
                     ),
 
-                    const SizedBox(height: 8),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF0F2179),
                       ),
                       onPressed: (){
-                        errouMensagem(context);
+                        verificarResposta(2);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          vertical: 10.0,
                           horizontal: 140.0,
                         ),
                         child: Text(
@@ -86,17 +82,15 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       ),
                     ),
 
-                    const SizedBox(height: 8),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF0F2179),
                       ),
                       onPressed: (){
-                        errouMensagem(context);
+                        verificarResposta(3);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          vertical: 10.0,
                           horizontal: 140.0,
                         ),
                         child: Text(
@@ -109,17 +103,15 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       ),
                     ),
 
-                    const SizedBox(height: 8),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF0F2179),
                       ),
                       onPressed: (){
-                        errouMensagem(context);
+                        verificarResposta(4);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          vertical: 10.0,
                           horizontal: 140.0,
                         ),
                         child: Text(
@@ -132,17 +124,15 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       ),
                     ),
 
-                    const SizedBox(height: 8),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF0F2179),
                       ),
                       onPressed: (){
-                        errouMensagem(context);
+                        verificarResposta(5);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          vertical: 10.0,
                           horizontal: 140.0,
                         ),
                         child: Text(
@@ -155,7 +145,7 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       ),
                     ),
 
-                  ]
+                 ]
               ),
             )
           ],
@@ -176,7 +166,15 @@ class _CardQuestoesState extends State<CardQuestoes> {
     );
   }
 
-  acertouMensagem(BuildContext context) {
+  verificarResposta(int resposta){
+    if(resposta == widget.questoes.alternativaCerta){
+      acertouMensagem();
+    } else {
+      errouMensagem();
+    }
+  }
+
+  acertouMensagem() {
     AlertDialog alerta = const AlertDialog(
       title: Text(
           "Parábens! Você Acertou!",
@@ -194,7 +192,7 @@ class _CardQuestoesState extends State<CardQuestoes> {
       },
     );
   }
-  errouMensagem(BuildContext context) {
+  errouMensagem() {
     AlertDialog alerta = const AlertDialog(
       title: Text(
           "Que Pena, Você Errou! Tente de novo ;) ",

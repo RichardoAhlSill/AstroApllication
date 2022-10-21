@@ -1,6 +1,7 @@
 class Questoes {
   late final String imagem;
   late final String titulo;
+  late final int alternativaCerta;
   late final String alternativa1;
   late final String alternativa2;
   late final String alternativa3;
@@ -38,5 +39,6 @@ class Questoes {
     alternativa3 = json['alternativa3'];
     alternativa4 = json['alternativa4'];
     alternativa5 = json['alternativa5'];
+    alternativaCerta = json['alternativa_certa'];
   }
 }

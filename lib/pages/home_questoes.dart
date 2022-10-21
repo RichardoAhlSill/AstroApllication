@@ -14,8 +14,7 @@ class HomeQuestoes extends StatefulWidget {
 
 class _HomeQuestoesState extends State<HomeQuestoes> {
 
-  Future<List<Questoes>> lista = BD.getQuestoes();
-  Future<List<Questoes>> lista2 = QuestoesDao().listarPacotes();
+  Future<List<Questoes>> lista = QuestoesDao().listarQuestoes();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +28,7 @@ class _HomeQuestoesState extends State<HomeQuestoes> {
         ),
       ),
       backgroundColor: Colors.grey[100],
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
@@ -42,18 +42,18 @@ class _HomeQuestoesState extends State<HomeQuestoes> {
   }
   buildListView() {
     return FutureBuilder<List<Questoes>>(
-      future: lista2,
+      future: lista,
       builder: (context, snapshot) {
 
         if(snapshot.hasData) {
-          List<Questoes> lista2 = snapshot.data ?? [];
+          List<Questoes> lista = snapshot.data ?? [];
 
           return ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: lista2.length,
+            itemCount: lista.length,
             itemBuilder: (BuildContext context, int index) {
-              return CardQuestoes(questoes: lista2[index]);
+              return CardQuestoes(questoes: lista[index]);
             },
           );
         }

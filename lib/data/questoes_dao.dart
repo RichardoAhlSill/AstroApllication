@@ -4,7 +4,7 @@ import 'package:sqflite/sqflite.dart';
 
 class QuestoesDao {
 
-  Future<List<Questoes>> listarPacotes() async {
+  Future<List<Questoes>> listarQuestoes() async {
     DBHelper dbHelper = DBHelper();
     Database db = await dbHelper.initDB();
 
