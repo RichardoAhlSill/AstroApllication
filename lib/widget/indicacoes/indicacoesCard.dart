@@ -1,13 +1,7 @@
-import 'package:astroapp/data/indicacoes/subPagesData/livros.dart';
+
 import 'package:astroapp/domain/indicacoes/principal_domain.dart';
-import 'package:astroapp/domain/indicacoes/subPagesDomain/livros.dart';
-import 'package:astroapp/pages/indicacoes/subPages/livros.dart';
-import 'package:astroapp/pages/indicacoes/subPages/outrasredes.dart';
-import 'package:astroapp/pages/indicacoes/subPages/sites.dart';
-import 'package:astroapp/pages/indicacoes/subPages/youtube.dart';
-import 'package:astroapp/widget/indicacoes/subPages/livros.dart';
-import 'package:astroapp/widget/indicacoes/subPages/sites.dart';
-import 'package:astroapp/widget/indicacoes/subPages/youtube.dart';
+import 'package:astroapp/pages/indicacoes/outrasredes.dart';
+import 'package:astroapp/pages/indicacoes/subpages.dart';
 import 'package:flutter/material.dart';
 
 class IndicacoesCard extends StatefulWidget {
@@ -20,86 +14,63 @@ class IndicacoesCard extends StatefulWidget {
 }
 
 class _IndicacoesCardState extends State<IndicacoesCard> {
-  Future<List<LivrosDomain>> lista_livros = LivrosData.getLivros();
+  //Future<List<LivrosDomain>> lista_livros = LivrosData.getLivros();
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        child: Container(
-          margin: EdgeInsets.only(bottom: 24),
-          decoration: BoxDecoration(
-            color: Colors.grey,
-            border: Border.all(
-              color: Colors.black,
-              width: 2,
-              style: BorderStyle.solid,
-            ),
-            borderRadius: BorderRadius.circular(16),
+      child: Container(
+        margin: EdgeInsets.only(bottom: 24),
+        decoration: BoxDecoration(
+          color: Colors.grey,
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+            style: BorderStyle.solid,
           ),
-          child: Column(
-            children: [
-              Text(
-                widget.principal_domain.titulocard,
-                style: TextStyle(
-                  fontSize: 24,
-                ),
-              ),
-              Image.network(
-                widget.principal_domain.imagem,
-                width: 200,
-                height: 100,
-              ),
-              SizedBox(
-                height: 16,
-              ),
-            ],
-          ),
+          borderRadius: BorderRadius.circular(16),
         ),
-        onTap: onTap);
+        child: Column(
+          children: [
+            Text(
+              widget.principal_domain.tituloCard,
+              style: TextStyle(
+                fontSize: 24,
+              ),
+            ),
+            Image.network(
+              widget.principal_domain.imagem,
+              width: 200,
+              height: 100,
+            ),
+            SizedBox(
+              height: 16,
+            ),
+          ],
+        ),
+      ),
+      onTap: onTap,
+    );
   }
 
   void onTap() {
-    if (widget.principal_domain.titulocard == 'Canais do YouTube') {
-      youtubeBuilder();
-    } else if (widget.principal_domain.titulocard == 'Sites') {
-      sitesBuilder();
-    } else if (widget.principal_domain.titulocard ==
-        'Livros e materiais diversos') {
-      livrosBuilder();
-    } else {
-      Navigator.push(
-        context,
+    subPagesBuilder();
+  }
+
+  subPagesBuilder() {
+    if (widget.principal_domain.tituloCard == 'Outras Redes') {
+      return Navigator.push(
+        context, 
         MaterialPageRoute(
           builder: (context) => OutrasRedes(),
         ),
       );
-    }
-  }
-
-  livrosBuilder() {
-    return Navigator.push(
+    } else return Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const Livros(),
-      ),
-    );
-  }
-
-  youtubeBuilder() {
-    return Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const YouTube(),
-      ),
-    );
-  }
-
-  sitesBuilder() {
-    return Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => Sites(),
-      ),
+          builder: (context) =>
+              SubPages(tipoIndicacao: widget.principal_domain.tituloCard)),
     );
   }
 }
+

@@ -3,6 +3,13 @@ import 'package:astroapp/domain/user.dart';
 import 'package:sqflite/sqflite.dart';
 
 class UserDao {
+  Future<void> salvarUser({required User user}) async {
+    DBHelper dbHelper = DBHelper();
+    Database db = await dbHelper.initDB();
+
+    await db.insert('user', user.toJson());
+  }
+
   Future<bool> autenticar(
       {required String user, required String password}) async {
     DBHelper dbHelper = DBHelper();
@@ -13,6 +20,7 @@ class UserDao {
         'WHERE username = ? AND password = ?;';
 
     final result = await db.rawQuery(sql, [user, password]);
+    listarUsers();
 
     return result.isNotEmpty;
   }
@@ -28,8 +36,11 @@ class UserDao {
     for (var json in result) {
       User usuario = User.fromJson(json);
       lista.add(usuario);
+      print(result.toString());
     }
 
     return lista;
   }
+
+  
 }

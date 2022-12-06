@@ -1,4 +1,5 @@
 import 'package:astroapp/data/questoes_dao.dart';
+import 'package:astroapp/pages/homePage.dart';
 import 'package:astroapp/widget/lista_questoes_card.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/domain/questoes.dart';
@@ -40,6 +41,7 @@ class _HomeQuestoesState extends State<HomeQuestoes> {
       ),
     );
   }
+
   buildListView() {
     return FutureBuilder<List<Questoes>>(
       future: lista,
@@ -63,4 +65,5 @@ class _HomeQuestoesState extends State<HomeQuestoes> {
       },
     );
   }
+
 }

@@ -1,8 +1,9 @@
-import 'package:astroapp/pages/conteudos_astronomia/constelacoes.dart';
-import 'package:astroapp/pages/conteudos_astronomia/introducao_astronomia.dart';
-import 'package:astroapp/pages/conteudos_astronomia/planetas.dart';
+import 'package:astroapp/data/assuntos_dao.dart';
 import 'package:flutter/material.dart';
 
+import '../data/bd.dart';
+import '../domain/menu_astro.dart';
+import '../widget/card_menu.dart';
 
 class Menu_Astronomia extends StatefulWidget {
   const Menu_Astronomia({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class Menu_Astronomia extends StatefulWidget {
 }
 
 class Menu_AstronomiaState extends State<Menu_Astronomia> {
-
+  Future<List<Menu_astro>> lista = AssuntosDao.listarPacotes('astronomia');
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,6 @@ class Menu_AstronomiaState extends State<Menu_Astronomia> {
           style: TextStyle(fontSize: 24),
         ),
       ),
-
-
       backgroundColor: Colors.grey[100],
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -39,8 +38,6 @@ class Menu_AstronomiaState extends State<Menu_Astronomia> {
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                      
-
                       children: [
                         Center(
                             child: Text(
@@ -54,137 +51,7 @@ class Menu_AstronomiaState extends State<Menu_Astronomia> {
                         Container(
                           margin: const EdgeInsets.only(bottom: 75.0),
                         ),
-
-
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                          ),
-                          child: Text(
-                            "INTRODUÇÃO À ASTRONOMIA",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.yellow,
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Introducao_Astronomia()),
-                              );
-                          },
-                        ),
-
-
-                        const SizedBox(height: 0),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 75.0),
-                           decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 7,
-                          ),
-                          ),
-                          child: InkWell(
-                          child: Image.network(
-                            'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/1200px-Starsinthesky.jpg',
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Introducao_Astronomia()),
-                              );
-                          },
-                          ),
-                        ),
-
-
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                          ),
-                          child: Text(
-                            "PLANETAS",
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.yellow,
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Planetas()),
-                              );
-                          },
-                        ),
-
-
-                        const SizedBox(height: 0),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 75.0),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 7,
-                          ),
-                          ),
-                          child: InkWell(
-                          child: Image.network(
-                            'https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3239440:1654285746/Sistema-Solar.jpg',
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Planetas()),
-                              );
-                          },
-                          ),
-                        ),
-
-
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                          ),
-                          child: Text(
-                            "CONSTELAÇÕES",
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.yellow,
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Constelacoes()),
-                              );
-                          },
-                        ),
-
-
-                        const SizedBox(height: 0),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 75.0),
-                           decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 7,
-                          ),
-                          ),
-                          child: InkWell(
-                          child: Image.network(
-                            'https://www.institutoclaro.org.br/educacao/wp-content/uploads/sites/2/2020/12/constelacao-scaled.jpg',
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Constelacoes()),
-                              );
-                          },
-                          ),
-                        ),
-
-                        
-
-
+                        MenuListView(),
                       ],
                     ),
                   ),
@@ -194,6 +61,28 @@ class Menu_AstronomiaState extends State<Menu_Astronomia> {
           ],
         ),
       ),
+    );
+  }
+
+  MenuListView() {
+    return FutureBuilder<List<Menu_astro>>(
+      future: lista,
+      builder: ((context, snapshot) {
+        if (snapshot.hasData) {
+          List<Menu_astro> lista = snapshot.data ?? [];
+
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: lista.length,
+            itemBuilder: (BuildContext context, int index) {
+              return CardMenu(menu_astro: lista[index]);
+            },
+          );
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      }),
     );
   }
 }

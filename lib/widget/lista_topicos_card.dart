@@ -67,7 +67,7 @@ class _CardTopicosState extends State<CardTopicos> {
           borderRadius: const BorderRadius.vertical(
             top: Radius.circular(8),
           ),
-          child: Image.network(widget.topicos.imagem),
+          child: Image.asset(widget.topicos.imagem),
         ),
       ],
     );

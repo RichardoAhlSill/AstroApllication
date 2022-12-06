@@ -1,8 +1,12 @@
-import 'package:astroapp/pages/astronautica.dart';
-import 'package:astroapp/pages/astronomia.dart';
-import 'package:astroapp/pages/indicacoes.dart';
+import 'package:astroapp/pages/conteudos_astronomia/planetas.dart';
+import 'package:astroapp/domain/topicos.dart';
+import 'package:astroapp/pages/indicacoes/principal.dart';
+import 'package:astroapp/pages/menu_astronautica.dart';
+import 'package:astroapp/pages/menu_astronomia.dart';
+import 'package:astroapp/pages/noticias/noticicaI.dart';
 import 'package:astroapp/pages/noticiasPage.dart';
 import 'package:astroapp/pages/novidadesPage.dart';
+import 'package:astroapp/pages/extra.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/pages/cadastropage.dart';
 import 'package:astroapp/pages/loginpage.dart';
@@ -10,6 +14,7 @@ import '../domain/noticias.dart';
 import '../widget/lista_noticias_card.dart';
 import 'package:astroapp/data/bd.dart';
 
+import '../widget/lista_topicos_card.dart';
 import 'assuntosQuest_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,9 +25,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
   Future<List<Noticias>> listaNoticias = BD.getCardNoticias();
+  Future<List<Topicos>> listaTopicos = BD.getCardTopicos();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CadastroPage()),
+                    MaterialPageRoute(builder: (context) => CadastroUser()),
                   );
                 },
                 icon: const Icon(Icons.person),
@@ -127,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomePage(),
+                              builder: (context) => NoticiasPage(),
                             ),
                           );
                         }),
@@ -145,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Astronautica()),
+                                builder: (context) => Menu_Astronautica()),
                           );
                         }),
                     SizedBox(height: 16),
@@ -161,7 +165,8 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Astronomia()),
+                          MaterialPageRoute(
+                              builder: (context) => Menu_Astronomia()),
                         );
                       },
                     ),
@@ -225,13 +230,21 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                     SizedBox(height: 16),
-                    const Text(
-                      'Extra',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
+                    InkWell(
+                      child: const Text(
+                        'Extra',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Extra(listaSobre: BD.listaSobre)),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -255,12 +268,43 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               buildListView(),
+
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => NoticiasPage(),
+                    ));
+                  },
+                  child: Text('VER MAIS'),
+                ),
+              ),
+
+              //TÓPICOS DA SEMANA
+
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 10,
+                ),
+                child: Text(
+                  'Tópicos da semana',
+                  style: TextStyle(
+                    fontSize: 35,
+                  ),
+                ),
+              ),
+              
+              buildListViewTopicos(),
+
+              //Sobre
+
               Padding(
                 padding: EdgeInsets.only(
                   top: 25,
                 ),
                 child: Text(
-                  'Tópicos da semana',
+                  'Sobre',
                   style: TextStyle(
                     fontSize: 35,
                   ),
@@ -271,27 +315,44 @@ class _HomePageState extends State<HomePage> {
                   margin: EdgeInsets.all(15.0),
                   color: Colors.grey,
                   width: 400,
-                  height: 270,
+                  height: 450,
                   child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5.0, bottom: 2.0),
+                      Center(
                         child: Text(
-                          'Planetas',
+                          'Quem somos',
                           style: TextStyle(
-                            fontSize: 25,
+                            fontSize: 29,
                           ),
                         ),
                       ),
-                      Image.network(
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVrLVOeETJ1JaRoTqErkXH8qFSf-hhykYFQQ&usqp=CAU',
-                        width: 375,
-                        height: 170,
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          'O AstroAPP é um projeto de origem '
+                          'escolar voltado para difusão da '
+                          'astronomia. Nosso objetivo é '
+                          'encantar as pessoas com a beleza do '
+                          'cosmos, em tudo que o concerne.',
+                          textAlign: TextAlign.justify,
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
+                      Container(
+                          margin: EdgeInsetsDirectional.only(top: 15),
+                          width: 110,
+                          height: 110,
+                          child: Image.asset('assets/logo_astroapp.png')),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Extra(listaSobre: BD.listaSobre),
+                            ));
+                          },
                           child: Text('VER MAIS'),
                         ),
                       ),
@@ -307,9 +368,12 @@ class _HomePageState extends State<HomePage> {
   buildListView() {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => NoticiasPage(),
-        ));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => NoticiasI(),
+          ),
+        );
       },
       child: FutureBuilder<List<Noticias>>(
         future: listaNoticias,
@@ -332,6 +396,41 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  buildListViewTopicos() {
+    return InkWell(
+      onTap: () {},
+      child: FutureBuilder<List<Topicos>>(
+          future: listaTopicos,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<Topicos> listaTopicos = snapshot.data ?? [];
+
+              return ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: listaTopicos.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return CardTopicos(topicos: listaTopicos[index]);
+                },
+              );
+            } else if (snapshot.hasError) {
+              child:
+              Text(
+                'Não funcionou',
+                style: TextStyle(
+                  fontSize: 25,
+                ),
+              );
+            } else if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+            return const Center(child: CircularProgressIndicator());
+          }),
+    );
+  }
+
 
   void onTap() {
     Navigator.push(

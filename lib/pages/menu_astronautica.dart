@@ -1,7 +1,9 @@
-import 'package:astroapp/pages/conteudos_astronautica/angulos_de_euler.dart';
-import 'package:astroapp/pages/conteudos_astronautica/aplicacoes_da_astronautica.dart';
-import 'package:astroapp/pages/conteudos_astronautica/introducao_astronautica.dart';
+import 'package:astroapp/data/assuntos_dao.dart';
+import 'package:astroapp/domain/menu_astro.dart';
+import 'package:astroapp/widget/card_menu.dart';
 import 'package:flutter/material.dart';
+
+import '../data/bd.dart';
 
 
 class Menu_Astronautica extends StatefulWidget {
@@ -13,6 +15,7 @@ class Menu_Astronautica extends StatefulWidget {
 
 class Menu_AstronauticaState extends State<Menu_Astronautica> {
 
+Future<List<Menu_astro>> lista = AssuntosDao.listarPacotes('astronautica');
 
   @override
   Widget build(BuildContext context) {
@@ -55,137 +58,7 @@ class Menu_AstronauticaState extends State<Menu_Astronautica> {
                           margin: const EdgeInsets.only(bottom: 75.0),
                         ),
 
-
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                          ),
-                          child: Text(
-                            "INTRODUÇÃO À ASTRONÁUTICA",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.yellow,
-
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Introducao_Astronautica()),
-                              );
-                          },
-                        ),
-
-
-                        const SizedBox(height: 0),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 75.0),
-                           decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 7,
-                          ),
-                          ),
-                          child: InkWell(
-                          child: Image.network(
-                            'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Soyuz_TMA-1.jpg/1200px-Soyuz_TMA-1.jpg',
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Introducao_Astronautica()),
-                              );
-                          },
-                          ),
-                        ),
-
-
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                          ),
-                          child: Text(
-                            "ÂNGULOS DE EULER",
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.yellow,
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Angulos_De_Euler()),
-                              );
-                          },
-                        ),
-
-
-                        const SizedBox(height: 0),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 75.0),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 7,
-                          ),
-                          ),
-                          child: InkWell(
-                          child: Image.network(
-                            'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Eulerangles.svg/800px-Eulerangles.svg.png', height: 400
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Angulos_De_Euler()),
-                              );
-                          },
-                          ),
-                        ),
-
-
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                          ),
-                          child: Text(
-                            "APLICAÇÕES DA ASTRONÁUTICA",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.yellow,
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Aplicacoes_Da_Astronautica()),
-                              );
-                          },
-                        ),
-
-
-                        const SizedBox(height: 0),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 75.0),
-                           decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 7,
-                          ),
-                          ),
-                          child: InkWell(
-                          child: Image.network(
-                            'https://upload.wikimedia.org/wikipedia/commons/0/0f/Artist%27s_Conception_of_Space_Station_Freedom_-_GPN-2003-00092.jpg',
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Aplicacoes_Da_Astronautica()),
-                              );
-                          },
-                          ),
-                        ),
-
-                        
-
+                        MenuListView(),
 
                       ],
                     ),
@@ -198,4 +71,29 @@ class Menu_AstronauticaState extends State<Menu_Astronautica> {
       ),
     );
   }
+
+  MenuListView() {
+    
+    return FutureBuilder<List<Menu_astro>>(
+      future: lista,
+      builder: ((context, snapshot) {
+
+        if (snapshot.hasData) {
+          List<Menu_astro> lista = snapshot.data ?? [];
+
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: lista.length,
+            itemBuilder: (BuildContext context, int index) {
+              return CardMenu(menu_astro: lista[index]);
+            },
+          );
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      }),
+    );
+  }
+
 }

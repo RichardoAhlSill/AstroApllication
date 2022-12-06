@@ -1,9 +1,5 @@
-import 'package:astroapp/data/indicacoes/principal_bd.dart';
+import 'package:astroapp/data/indicacoes_dao.dart';
 import 'package:astroapp/domain/indicacoes/principal_domain.dart';
-import 'package:astroapp/pages/indicacoes/subPages/livros.dart';
-import 'package:astroapp/pages/indicacoes/subPages/outrasredes.dart';
-import 'package:astroapp/pages/indicacoes/subPages/sites.dart';
-import 'package:astroapp/pages/indicacoes/subPages/youtube.dart';
 import 'package:astroapp/widget/indicacoes/indicacoesCard.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +12,7 @@ class IndicacoesPage extends StatefulWidget {
 
 class _IndicacoesPageState extends State<IndicacoesPage> {
   
-  Future<List<PrincipalDomain>> lista_principal = PrincipalData.getListaIndicacoes();
+  Future<List<PrincipalDomain>> lista_principal = IndicacoesDAO.listarPrincipalIndicacoes();
 
   @override
   Widget build(BuildContext context) {

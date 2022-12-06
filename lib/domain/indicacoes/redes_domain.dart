@@ -1,17 +1,39 @@
 class RedesDomain {
   //final String tituloprinc; //PEGAR O TÍRULO DE "TÍTULO CARD" DE PRINCIPAL
-  final String nome;
-  final String imagem;
-  final String texto;
-  final String link_insta;
-  final String link_tel;
+  late String nome;
+  late String imagem;
+  late String texto;
+  late String linkInsta;
+  late String linkTel;
+  late String tipoIndicacao;
 
   RedesDomain({
-    //required this.tituloprinc, VER ACIMA
-    required this.nome,
-    required this.imagem,
-    required this.texto,
-    required this.link_insta,
-    required this.link_tel,
+      required this.nome,
+      required this.imagem,
+      required this.texto,
+      required this.linkInsta,
+      required this.linkTel,
+      required this.tipoIndicacao
   });
+
+  RedesDomain.fromJson(Map<String, dynamic> json) {
+    nome = json['nome'];
+    imagem = json['imagem'];
+    texto = json['texto'];
+    linkInsta = json['linkInsta'];
+    linkTel = json['linkTel'];
+    tipoIndicacao = json['tipoIndicacao'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    nome = data['nome'];
+    imagem = data['imagem'];
+    texto = data['texto'];
+    linkInsta = data['linkInsta'];
+    linkTel = data['linkTel'];
+    tipoIndicacao = data['tipoIndicacao'];
+
+    return data;
+  }
 }

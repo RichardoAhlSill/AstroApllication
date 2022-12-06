@@ -1,11 +1,11 @@
-class Topicos{
-  final String imagem;
+class Topicos {
   final String titulo;
+  final String imagem;
   final String conteudo;
 
   Topicos({
-    required this.imagem,
     required this.titulo,
+    required this.imagem,
     required this.conteudo,
   });
 }

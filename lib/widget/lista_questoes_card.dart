@@ -17,7 +17,6 @@ class CardQuestoes extends StatefulWidget {
 class _CardQuestoesState extends State<CardQuestoes> {
   @override
   Widget build(BuildContext context) {
-
     return InkWell(
       child: Card(
         shape: RoundedRectangleBorder(
@@ -29,11 +28,12 @@ class _CardQuestoesState extends State<CardQuestoes> {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
 
                     Text(
                       widget.questoes.titulo,
+                      textAlign: TextAlign.justify,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -47,16 +47,11 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       onPressed: (){
                         verificarResposta(1);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 140.0,
-                        ),
-                        child: Text(
-                          widget.questoes.alternativa1,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
+                      child: Text(
+                        widget.questoes.alternativa1,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -68,16 +63,11 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       onPressed: (){
                         verificarResposta(2);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 140.0,
-                        ),
-                        child: Text(
-                          widget.questoes.alternativa2,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
+                      child: Text(
+                        widget.questoes.alternativa2,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -89,16 +79,11 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       onPressed: (){
                         verificarResposta(3);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 140.0,
-                        ),
-                        child: Text(
-                          widget.questoes.alternativa3,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
+                      child: Text(
+                        widget.questoes.alternativa3,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -110,16 +95,11 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       onPressed: (){
                         verificarResposta(4);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 140.0,
-                        ),
-                        child: Text(
-                          widget.questoes.alternativa4,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
+                      child: Text(
+                        widget.questoes.alternativa4,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -131,21 +111,16 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       onPressed: (){
                         verificarResposta(5);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 140.0,
-                        ),
-                        child: Text(
-                          widget.questoes.alternativa5,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
+                      child: Text(
+                        widget.questoes.alternativa5,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
 
-                 ]
+                  ]
               ),
             )
           ],
@@ -153,6 +128,7 @@ class _CardQuestoesState extends State<CardQuestoes> {
       ),
     );
   }
+
   buildImage() {
     return Stack(
       children: [
@@ -195,7 +171,7 @@ class _CardQuestoesState extends State<CardQuestoes> {
   errouMensagem() {
     AlertDialog alerta = const AlertDialog(
       title: Text(
-          "Que Pena, Você Errou! Tente de novo ;) ",
+          "Que Pena, Você Errou! Tente de novo! ",
         style: TextStyle(
           color: Color(0xFFAA0718),
           fontSize: 15,

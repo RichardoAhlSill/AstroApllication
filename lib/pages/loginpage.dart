@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
       context,
       MaterialPageRoute(
         builder: (context) {
-          return const CadastroPage();
+          return const CadastroUser();
         },
       ),
     );
@@ -150,8 +150,10 @@ class _LoginPageState extends State<LoginPage> {
           ),
         );
       }
+
     } else {
-      print("Formulário inválido");
+      print("Formulário inválido, cara");
+      print("Formulário inválido, cara");
     }
   }
 }
