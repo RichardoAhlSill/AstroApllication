@@ -36,7 +36,6 @@ class UserDao {
     for (var json in result) {
       User usuario = User.fromJson(json);
       lista.add(usuario);
-      print(result.toString());
     }
 
     return lista;
