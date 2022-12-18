@@ -49,7 +49,7 @@ class _CadastroUserState extends State<CadastroUser> {
               TextFormField(
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Campo e-mail obrigatório';
+                    return 'Campo usuário obrigatório';
                   }
                   return null;
                 },
@@ -57,6 +57,17 @@ class _CadastroUserState extends State<CadastroUser> {
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Usuário'),
               ),
+              const SizedBox(height: 16),
+              TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo e-mail obrigatório';
+                  }
+                  return null;
+                },               
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'E-mail'),
+              ),              
               const SizedBox(height: 16),
               TextFormField(
                 controller: passwordController,
@@ -72,7 +83,45 @@ class _CadastroUserState extends State<CadastroUser> {
                 },
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Senha'),
+<<<<<<< HEAD
               ),
+=======
+              ),  
+              const SizedBox(height: 16),
+              TextFormField(            
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo cidade obrigatório';
+                  }
+                  return null;
+                },
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'Cidade'),
+              ),  
+              const SizedBox(height: 16),
+              TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo País obrigatório';
+                  }
+
+                  return null;
+                },
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'País'),
+              ),  
+              const SizedBox(height: 16),
+              TextFormField(           
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo cargo obrigatório';
+                  }
+                  return null;
+                },
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'Cargo'),
+              ),  
+>>>>>>> 15fb4778662f57017a59215ab4e1f1a072305b37
               const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: onPressed,

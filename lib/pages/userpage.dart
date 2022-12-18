@@ -1,8 +1,16 @@
 import 'dart:io';
+<<<<<<< HEAD
 import 'package:flutter/material.dart';
 import 'package:astroapp/domain/user.dart';
 import 'package:astroapp/pages/loginpage.dart';
 import '../data/bd/user_dao.dart';
+=======
+import 'package:astroapp/pages/trocarUser.dart';
+import 'package:flutter/material.dart';
+import 'package:astroapp/domain/user.dart';
+import 'package:astroapp/pages/loginpage.dart';
+import '../data/user_dao.dart';
+>>>>>>> 15fb4778662f57017a59215ab4e1f1a072305b37
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -117,7 +125,11 @@ class _UserPageState extends State<UserPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
+<<<<<<< HEAD
                     builder: (context) => const LoginPage(),
+=======
+                    builder: (context) => const TrocarUser(),
+>>>>>>> 15fb4778662f57017a59215ab4e1f1a072305b37
                   ),
                 );
               },
