@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:astroapp/domain/questoes.dart';
-import 'package:astroapp/pages/home_questoes.dart';
 
 class CardQuestoes extends StatefulWidget {
   final Questoes questoes;

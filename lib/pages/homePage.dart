@@ -7,6 +7,7 @@ import 'package:astroapp/pages/noticias/noticicaI.dart';
 import 'package:astroapp/pages/noticiasPage.dart';
 import 'package:astroapp/pages/novidadesPage.dart';
 import 'package:astroapp/pages/extra.dart';
+import 'package:astroapp/pages/userpage.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/pages/cadastropage.dart';
 import 'package:astroapp/pages/loginpage.dart';
@@ -105,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginPage()),
+                          builder: (context) => const UserPage()),
                     );
                   },
                 ),
