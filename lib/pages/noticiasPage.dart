@@ -1,4 +1,4 @@
-import 'package:astroapp/data/noticias_dao.dart';
+import 'package:astroapp/data/bd/noticias_dao.dart';
 import 'package:astroapp/pages/conteudos_astronomia/planetas.dart';
 import 'package:astroapp/pages/indicacoes/principal.dart';
 import 'package:astroapp/pages/menu_astronautica.dart';
@@ -12,7 +12,7 @@ import 'package:astroapp/pages/cadastropage.dart';
 import 'package:astroapp/pages/loginpage.dart';
 import '../domain/noticias.dart';
 import '../widget/lista_noticias_card.dart';
-import 'package:astroapp/data/bd.dart';
+import 'package:astroapp/data/bd/bd.dart';
 
 import 'assuntosQuest_page.dart';
 

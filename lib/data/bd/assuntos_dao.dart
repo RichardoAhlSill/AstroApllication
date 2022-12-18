@@ -1,9 +1,8 @@
-import 'package:astroapp/data/db_helper.dart';
+import 'package:astroapp/data/bd/db_helper.dart';
 import 'package:astroapp/domain/menu_astro.dart';
 import 'package:sqflite/sqflite.dart';
 
 class AssuntosDao {
-
   /*Future<List<Menu_astro>> listarPacotes() async {
     DBHelper dbHelper = DBHelper();
     Database db = await dbHelper.initDB();
@@ -22,13 +21,11 @@ class AssuntosDao {
     return lista;
   }*/
 
-  static Future<List<Menu_astro>> listarPacotes(
-      String tipoGenero) async {
+  static Future<List<Menu_astro>> listarPacotes(String tipoGenero) async {
     DBHelper subHelper = DBHelper();
     Database db = await subHelper.initDB();
 
-    String sqlassunto =
-        "SELECT * FROM assuntos WHERE genero = ?;";
+    String sqlassunto = "SELECT * FROM assuntos WHERE genero = ?;";
     final result = await db.rawQuery(sqlassunto, [tipoGenero]);
 
     List<Menu_astro> lista = <Menu_astro>[];
@@ -43,8 +40,7 @@ class AssuntosDao {
     DBHelper subHelper = DBHelper();
     Database db = await subHelper.initDB();
 
-    String sqlassunto =
-        "SELECT * FROM assuntos WHERE rota = ?;";
+    String sqlassunto = "SELECT * FROM assuntos WHERE rota = ?;";
     final result = await db.rawQuery(sqlassunto, [rota]);
 
     List<Menu_astro> listaAssuntos = <Menu_astro>[];
@@ -57,5 +53,4 @@ class AssuntosDao {
     }
     return listaAssuntos;
   }
-
 }

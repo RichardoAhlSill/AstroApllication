@@ -2,7 +2,7 @@ import 'package:astroapp/pages/assuntosQuest_page.dart';
 import 'package:astroapp/widget/card_assuntos.dart';
 import 'package:flutter/material.dart';
 
-import '../../data/assuntos_dao.dart';
+import '../../data/bd/assuntos_dao.dart';
 import '../../domain/menu_astro.dart';
 
 class Constelacoes extends StatefulWidget {

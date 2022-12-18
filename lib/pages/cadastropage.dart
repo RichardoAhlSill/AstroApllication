@@ -1,4 +1,4 @@
-import 'package:astroapp/data/user_dao.dart';
+import 'package:astroapp/data/bd/user_dao.dart';
 import 'package:astroapp/domain/user.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,8 @@ class _CadastroUserState extends State<CadastroUser> {
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 18, 30, 138),
           centerTitle: true,
-          title: const Text('AstroApp',
+          title: const Text(
+            'AstroApp',
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -31,11 +32,9 @@ class _CadastroUserState extends State<CadastroUser> {
   }
 
   buildBody() {
-    
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
-        
         child: Form(
           key: _formKey,
           child: Column(
@@ -73,20 +72,16 @@ class _CadastroUserState extends State<CadastroUser> {
                 },
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Senha'),
-              ),  
+              ),
               const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: onPressed,
-                style:
-                    ElevatedButton.styleFrom(primary: Colors.black),
+                style: ElevatedButton.styleFrom(primary: Colors.black),
                 child: const Padding(
                   padding: EdgeInsets.symmetric(vertical: 12.0),
                   child: Text(
                     'Cadastrar Usuário',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.yellow
-                    ),
+                    style: TextStyle(fontSize: 20, color: Colors.yellow),
                   ),
                 ),
               ),

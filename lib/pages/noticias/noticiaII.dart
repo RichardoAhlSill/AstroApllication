@@ -5,7 +5,7 @@ import 'package:astroapp/pages/cadastropage.dart';
 import 'package:astroapp/pages/loginpage.dart';
 import '../../domain/noticias.dart';
 import '../../widget/lista_noticias_card.dart';
-import 'package:astroapp/data/bd.dart';
+import 'package:astroapp/data/bd/bd.dart';
 
 class NoticiasII extends StatefulWidget {
   const NoticiasII({Key? key}) : super(key: key);

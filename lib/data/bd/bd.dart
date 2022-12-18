@@ -5,13 +5,6 @@ import 'package:astroapp/domain/sobre.dart';
 import 'package:astroapp/pages/conteudos_astronautica/introducao_astronautica.dart';
 import 'package:astroapp/domain/topicos.dart';
 
-
-import '../pages/conteudos_astronautica/angulos_de_euler.dart';
-import '../pages/conteudos_astronautica/aplicacoes_da_astronautica.dart';
-import '../pages/conteudos_astronomia/constelacoes.dart';
-import '../pages/conteudos_astronomia/introducao_astronomia.dart';
-import '../pages/conteudos_astronomia/planetas.dart';
-
 class BD {
   static List<Questoes> lista = [
     Questoes(
@@ -90,21 +83,18 @@ class BD {
 
   static List<Noticias> listaNoticias = [
     Noticias(
-      imagem:
-          'assets/not1.jpg',
+      imagem: 'assets/not1.jpg',
       titulo: 'Brasil será sede de lançamento de foguete sul-coreano',
       id: 'NotíciaI()',
     ),
     Noticias(
-      imagem:
-          'assets/not2.jpg',
+      imagem: 'assets/not2.jpg',
       titulo:
           'James Webb encontra dióxido de carbono em planeta fora do Sistema Solar',
       id: 'NotíciaII()',
     ),
     Noticias(
-      imagem:
-          'assets/not3.jpg',
+      imagem: 'assets/not3.jpg',
       titulo: 'Unesp promoverá cursos sobre astronomia; saiba como participar',
       id: 'NotíciaIII()',
     )
@@ -112,111 +102,64 @@ class BD {
 
   static List<Topicos> listaTopicos = [
     Topicos(
-        titulo: 'Planetas',
-        imagem:
-            'assets/top1.jpg',
-        conteudo: 'Planetas()'),
+        titulo: 'Planetas', imagem: 'assets/top1.jpg', conteudo: 'Planetas()'),
     Topicos(
         titulo: 'Constelações',
-        imagem:
-            'assets/top2.jpg',
+        imagem: 'assets/top2.jpg',
         conteudo: 'Constelacoes()')
   ];
 
   static List<Sobre> listaSobre = [
     Sobre(
-      img:
-          'assets/ig.png',
-      desenvolvedores:
-          '@daniel_dbs7',
-      rota:
-          'https://www.instagram.com/daniel_dbs7/',
+      img: 'assets/ig.png',
+      desenvolvedores: '@daniel_dbs7',
+      rota: 'https://www.instagram.com/daniel_dbs7/',
     ),
-
     Sobre(
-      img:
-          'assets/ig.png',
-      desenvolvedores:
-          '@icamicosta',
-      rota:
-          'https://www.instagram.com/icamicosta/',
-
+      img: 'assets/ig.png',
+      desenvolvedores: '@icamicosta',
+      rota: 'https://www.instagram.com/icamicosta/',
     ),
-
     Sobre(
-      img:
-          'assets/ig.png',
-      desenvolvedores:
-          '@marcosfelypesilva',
-      rota:
-          'https://www.instagram.com/marcosfelypesilva/',
+      img: 'assets/ig.png',
+      desenvolvedores: '@marcosfelypesilva',
+      rota: 'https://www.instagram.com/marcosfelypesilva/',
     ),
-
     Sobre(
-      img:
-          'assets/ig.png',
-      desenvolvedores:
-          '@richardo_ahl.sill',
-      rota:
-          'https://www.instagram.com/richardo_ahl.sill/',
+      img: 'assets/ig.png',
+      desenvolvedores: '@richardo_ahl.sill',
+      rota: 'https://www.instagram.com/richardo_ahl.sill/',
     ),
-
     Sobre(
-      img:
-          'assets/ig.png',
-      desenvolvedores:
-          '@v_magalhaees',
-      rota:
-          'https://www.instagram.com/v_magalhaees/',
+      img: 'assets/ig.png',
+      desenvolvedores: '@v_magalhaees',
+      rota: 'https://www.instagram.com/v_magalhaees/',
     ),
-
-
-
     Sobre(
-      img:
-          'assets/wts.png',
-      desenvolvedores:
-          'Daniel Berg',
-      rota:
-          'https://api.whatsapp.com/send?phone=5582996591380',
+      img: 'assets/wts.png',
+      desenvolvedores: 'Daniel Berg',
+      rota: 'https://api.whatsapp.com/send?phone=5582996591380',
     ),
-    
     Sobre(
-      img:
-          'assets/wts.png',
-      desenvolvedores:
-          'Içami Costa',
-      rota:
-          'https://api.whatsapp.com/send?phone=5582996136105',
+      img: 'assets/wts.png',
+      desenvolvedores: 'Içami Costa',
+      rota: 'https://api.whatsapp.com/send?phone=5582996136105',
     ),
-
     Sobre(
-      img:
-          'assets/wts.png',
-      desenvolvedores:
-          'Marcos Felype',
-      rota:
-          'https://api.whatsapp.com/send?phone=5582981930891',
+      img: 'assets/wts.png',
+      desenvolvedores: 'Marcos Felype',
+      rota: 'https://api.whatsapp.com/send?phone=5582981930891',
     ),
-
     Sobre(
-      img:
-          'assets/wts.png',
-      desenvolvedores:
-          'Ricardo Alexandre',
-      rota:
-          'https://api.whatsapp.com/send?phone=5582999277242',
+      img: 'assets/wts.png',
+      desenvolvedores: 'Ricardo Alexandre',
+      rota: 'https://api.whatsapp.com/send?phone=5582999277242',
     ),
-
     Sobre(
-      img:
-          'assets/wts.png',
-      desenvolvedores:
-          'Vítor Magalhães',
-      rota:
-          'https://api.whatsapp.com/send?phone=5582981708764',
+      img: 'assets/wts.png',
+      desenvolvedores: 'Vítor Magalhães',
+      rota: 'https://api.whatsapp.com/send?phone=5582981708764',
     ),
-    
   ];
 /*
   static List<Menu_astro> listaMenu = [
