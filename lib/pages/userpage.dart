@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:astroapp/pages/alterarDadosUser.dart';
+import 'package:astroapp/pages/trocarUser.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/domain/user.dart';
 import 'package:astroapp/pages/loginpage.dart';
@@ -65,7 +67,7 @@ class _UserPageState extends State<UserPage> {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  'Cidade: Coité do Nóia - Alagoas',
+                  'Idade: 18',
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 22,
@@ -90,11 +92,23 @@ class _UserPageState extends State<UserPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Área de preferência: Astronomia',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 48),
             InkWell(
-              onTap: () {},
+              onTap: (() => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AlterarDadosUser()))),
               child: Wrap(
                 children: [
                   Icon(
@@ -117,7 +131,7 @@ class _UserPageState extends State<UserPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const LoginPage(),
+                    builder: (context) => const TrocarUser(),
                   ),
                 );
               },
@@ -139,7 +153,7 @@ class _UserPageState extends State<UserPage> {
             ),
             const SizedBox(height: 20),
             InkWell(
-              onTap: () {},
+              onTap: deleteUser,
               child: Wrap(
                 children: [
                   Icon(
@@ -159,6 +173,26 @@ class _UserPageState extends State<UserPage> {
           ],
         ),
       ),
+    );
+  }
+
+  deleteUser() {
+    AlertDialog alerta = const AlertDialog(
+      title: Text(
+        "Tem certeza que deseja excluir o usuário?",
+        style: TextStyle(
+          color: Color(0xFF3E7F34),
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      //Alterar aqui
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
     );
   }
 }
