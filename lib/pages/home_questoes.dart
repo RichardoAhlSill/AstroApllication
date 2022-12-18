@@ -1,12 +1,11 @@
-import 'package:astroapp/data/questoes_dao.dart';
+import 'package:astroapp/data/bd/questoes_dao.dart';
 import 'package:astroapp/pages/homePage.dart';
 import 'package:astroapp/widget/lista_questoes_card.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/domain/questoes.dart';
-import 'package:astroapp/data/bd.dart';
+import 'package:astroapp/data/bd/bd.dart';
 
 class HomeQuestoes extends StatefulWidget {
-
   const HomeQuestoes({Key? key}) : super(key: key);
 
   @override
@@ -14,7 +13,6 @@ class HomeQuestoes extends StatefulWidget {
 }
 
 class _HomeQuestoesState extends State<HomeQuestoes> {
-
   Future<List<Questoes>> lista = QuestoesDao().listarQuestoes();
 
   @override
@@ -29,14 +27,10 @@ class _HomeQuestoesState extends State<HomeQuestoes> {
         ),
       ),
       backgroundColor: Colors.grey[100],
-
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
-          children: [
-            const SizedBox(height: 16),
-            buildListView()
-          ],
+          children: [const SizedBox(height: 16), buildListView()],
         ),
       ),
     );
@@ -46,8 +40,7 @@ class _HomeQuestoesState extends State<HomeQuestoes> {
     return FutureBuilder<List<Questoes>>(
       future: lista,
       builder: (context, snapshot) {
-
-        if(snapshot.hasData) {
+        if (snapshot.hasData) {
           List<Questoes> lista = snapshot.data ?? [];
 
           return ListView.builder(
@@ -61,9 +54,7 @@ class _HomeQuestoesState extends State<HomeQuestoes> {
         }
 
         return const Center(child: CircularProgressIndicator());
-
       },
     );
   }
-
 }

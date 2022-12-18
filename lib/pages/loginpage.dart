@@ -2,7 +2,7 @@ import 'package:astroapp/pages/cadastropage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:astroapp/data/user_dao.dart';
+import 'package:astroapp/data/bd/user_dao.dart';
 
 import 'homePage.dart';
 
@@ -150,7 +150,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         );
       }
-
     } else {
       print("Formulário inválido, cara");
       print("Formulário inválido, cara");

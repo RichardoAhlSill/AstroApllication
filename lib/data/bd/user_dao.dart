@@ -1,4 +1,4 @@
-import 'package:astroapp/data/db_helper.dart';
+import 'package:astroapp/data/bd/db_helper.dart';
 import 'package:astroapp/domain/user.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -41,6 +41,4 @@ class UserDao {
 
     return lista;
   }
-
-  
 }

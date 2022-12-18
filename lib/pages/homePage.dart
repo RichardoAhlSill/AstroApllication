@@ -12,7 +12,7 @@ import 'package:astroapp/pages/cadastropage.dart';
 import 'package:astroapp/pages/loginpage.dart';
 import '../domain/noticias.dart';
 import '../widget/lista_noticias_card.dart';
-import 'package:astroapp/data/bd.dart';
+import 'package:astroapp/data/bd/bd.dart';
 
 import '../widget/lista_topicos_card.dart';
 import 'assuntosQuest_page.dart';
@@ -242,7 +242,9 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Extra(listaSobre: BD.listaSobre)),
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  Extra(listaSobre: BD.listaSobre)),
                         );
                       },
                     ),
@@ -294,7 +296,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              
+
               buildListViewTopicos(),
 
               //Sobre
@@ -350,7 +352,8 @@ class _HomePageState extends State<HomePage> {
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Extra(listaSobre: BD.listaSobre),
+                              builder: (context) =>
+                                  Extra(listaSobre: BD.listaSobre),
                             ));
                           },
                           child: Text('VER MAIS'),
@@ -430,7 +433,6 @@ class _HomePageState extends State<HomePage> {
           }),
     );
   }
-
 
   void onTap() {
     Navigator.push(

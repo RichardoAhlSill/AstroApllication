@@ -5,12 +5,6 @@ import 'package:astroapp/domain/sobre.dart';
 import 'package:astroapp/pages/conteudos_astronautica/introducao_astronautica.dart';
 import 'package:astroapp/domain/topicos.dart';
 
-import '../pages/conteudos_astronautica/angulos_de_euler.dart';
-import '../pages/conteudos_astronautica/aplicacoes_da_astronautica.dart';
-import '../pages/conteudos_astronomia/constelacoes.dart';
-import '../pages/conteudos_astronomia/introducao_astronomia.dart';
-import '../pages/conteudos_astronomia/planetas.dart';
-
 class BD {
   static List<Questoes> lista = [
     Questoes(

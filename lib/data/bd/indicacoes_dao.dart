@@ -1,4 +1,4 @@
-import 'package:astroapp/data/db_helper.dart';
+import 'package:astroapp/data/bd/db_helper.dart';
 import 'package:astroapp/domain/indicacoes/principal_domain.dart';
 import 'package:astroapp/domain/indicacoes/redes_domain.dart';
 import 'package:astroapp/domain/indicacoes/subpages_domain.dart';
@@ -26,7 +26,7 @@ class IndicacoesDAO {
     Database db = await subHelper.initDB();
 
     String sql = "SELECT * FROM subpages_indicacoes WHERE tipoIndicacao = ?";
-        //"SELECT * FROM subpages_indicacoes WHERE tipoIndicacao = '$tipoIndicacao';"; => erro: SQL injeption!
+    //"SELECT * FROM subpages_indicacoes WHERE tipoIndicacao = '$tipoIndicacao';"; => erro: SQL injeption!
     final result = await db.rawQuery(sql, [tipoIndicacao]);
 
     List<SubPagesDomain> lista_subpages = <SubPagesDomain>[];

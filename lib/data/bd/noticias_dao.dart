@@ -1,4 +1,4 @@
-import 'package:astroapp/data/db_helper.dart';
+import 'package:astroapp/data/bd/db_helper.dart';
 import 'package:astroapp/domain/noticias.dart';
 import 'package:sqflite/sqflite.dart';
 

@@ -35,7 +35,7 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.16.0"
+    version: "1.15.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -49,7 +49,11 @@ packages:
       name: fake_async
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.3.1"
+=======
+    version: "1.2.0"
+>>>>>>> 464e478c6776e625bfb203cbabf02d2ed6c10bce
   flutter:
     dependency: "direct main"
     description: flutter
@@ -92,7 +96,7 @@ packages:
       name: js
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.4"
+    version: "0.6.3"
   lints:
     dependency: transitive
     description:
@@ -113,7 +117,11 @@ packages:
       name: material_color_utilities
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.1.5"
+=======
+    version: "0.1.3"
+>>>>>>> 464e478c6776e625bfb203cbabf02d2ed6c10bce
   meta:
     dependency: transitive
     description:
@@ -127,7 +135,11 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.8.2"
+=======
+    version: "1.8.0"
+>>>>>>> 464e478c6776e625bfb203cbabf02d2ed6c10bce
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -146,14 +158,18 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.9.0"
+=======
+    version: "1.8.1"
+>>>>>>> 464e478c6776e625bfb203cbabf02d2ed6c10bce
   sqflite:
     dependency: "direct main"
     description:
       name: sqflite
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.3+1"
+    version: "2.0.2+1"
   sqflite_common:
     dependency: transitive
     description:
@@ -202,14 +218,22 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.4.12"
+=======
+    version: "0.4.8"
+>>>>>>> 464e478c6776e625bfb203cbabf02d2ed6c10bce
   typed_data:
     dependency: transitive
     description:
       name: typed_data
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.3.1"
+=======
+    version: "1.3.0"
+>>>>>>> 464e478c6776e625bfb203cbabf02d2ed6c10bce
   url_launcher:
     dependency: "direct main"
     description:
@@ -272,7 +296,7 @@ packages:
       name: vector_math
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.2"
+    version: "2.1.1"
 sdks:
-  dart: ">=2.17.0-0 <3.0.0"
-  flutter: ">=3.0.0"
+  dart: ">=2.16.1 <3.0.0"
+  flutter: ">=2.10.0"
