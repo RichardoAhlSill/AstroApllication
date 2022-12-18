@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:astroapp/data/api/questoes_api.dart';
 import 'package:astroapp/data/bd/questoes_dao.dart';
 import 'package:astroapp/pages/homePage.dart';
 import 'package:astroapp/widget/lista_questoes_card.dart';
@@ -13,7 +16,7 @@ class HomeQuestoes extends StatefulWidget {
 }
 
 class _HomeQuestoesState extends State<HomeQuestoes> {
-  Future<List<Questoes>> lista = QuestoesDao().listarQuestoes();
+  Future<List<Questoes>> lista = QuestoesApi().listarQuestoesApi();
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +54,10 @@ class _HomeQuestoesState extends State<HomeQuestoes> {
               return CardQuestoes(questoes: lista[index]);
             },
           );
+        } else if (snapshot.hasError) {
+          return Center(child: Text("Tem erro aqui, mano"));
+        } else if (!snapshot.hasData) {
+          return Center(child: CircularProgressIndicator());
         }
 
         return const Center(child: CircularProgressIndicator());

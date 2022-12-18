@@ -7,6 +7,7 @@ import 'package:astroapp/domain/topicos.dart';
 
 class BD {
   static List<Questoes> lista = [
+    /*
     Questoes(
       imagem:
           'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Size_planets_comparison.jpg/1280px-Size_planets_comparison.jpg',
@@ -79,6 +80,7 @@ class BD {
       alternativa4: 'd) 2',
       alternativa5: 'e) 3',
     ),
+    */
   ];
 
   static List<Noticias> listaNoticias = [
