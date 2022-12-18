@@ -88,12 +88,12 @@ class _CadastroUserState extends State<CadastroUser> {
               TextFormField(
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Campo cidade obrigatório';
+                    return 'Campo idade obrigatório';
                   }
                   return null;
                 },
                 decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'Cidade'),
+                    border: OutlineInputBorder(), labelText: 'Idade'),
               ),
               const SizedBox(height: 16),
               TextFormField(
@@ -117,6 +117,18 @@ class _CadastroUserState extends State<CadastroUser> {
                 },
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Cargo'),
+              ),
+              const SizedBox(height: 16),
+              TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo área de preferência obrigatório';
+                  }
+                  return null;
+                },
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Assunto de maior relevância do aplicativo'),
               ),
               const SizedBox(height: 32),
               ElevatedButton(
