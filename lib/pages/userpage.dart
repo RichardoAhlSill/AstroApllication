@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:astroapp/pages/trocarUser.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/domain/user.dart';
 import 'package:astroapp/pages/loginpage.dart';
@@ -117,7 +118,7 @@ class _UserPageState extends State<UserPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const LoginPage(),
+                    builder: (context) => const TrocarUser(),
                   ),
                 );
               },
