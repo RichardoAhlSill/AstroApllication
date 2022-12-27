@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:astroapp/data/api/user_api.dart';
 import 'package:astroapp/pages/alterarDadosUser.dart';
 import 'package:astroapp/pages/trocarUser.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,13 @@ class UserPage extends StatefulWidget {
   State<UserPage> createState() => _UserPageState();
 }
 
+
+
 class _UserPageState extends State<UserPage> {
   @override
+
+  //Future<User> user = UsuariosApi().listarEspecificUsersApi('5464645');
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
