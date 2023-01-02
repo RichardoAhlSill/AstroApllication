@@ -6,8 +6,13 @@ import 'package:astroapp/domain/user.dart';
 import 'package:astroapp/pages/loginpage.dart';
 import '../data/bd/user_dao.dart';
 
+
+
 class UserPage extends StatefulWidget {
-  const UserPage({Key? key}) : super(key: key);
+
+  final User user;
+
+  const UserPage({Key? key, required this.user,}) : super(key: key);
 
   @override
   State<UserPage> createState() => _UserPageState();
@@ -57,8 +62,8 @@ class _UserPageState extends State<UserPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 48),
-                const Text(
-                  'E-mail: mfs22@aluno.ifal.edu.br',
+                Text(
+                  "E-mail: " + widget.user.email, 
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 22,
@@ -66,8 +71,8 @@ class _UserPageState extends State<UserPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  'Idade: 18',
+                Text(
+                  "Idade: " + widget.user.age,
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 22,
@@ -75,8 +80,8 @@ class _UserPageState extends State<UserPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  'País: Brasil',
+                Text(
+                  "País: " + widget.user.country,
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 22,
@@ -84,8 +89,8 @@ class _UserPageState extends State<UserPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  'Cargo: Técnico em Informática',
+                Text(
+                  "Cargo: " + widget.user.country,
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 22,
@@ -93,8 +98,8 @@ class _UserPageState extends State<UserPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  'Área de preferência: Astronomia',
+                Text(
+                  "Área de preferência: " + widget.user.preferenceArea,
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 22,

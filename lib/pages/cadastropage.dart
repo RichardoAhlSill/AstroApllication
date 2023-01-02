@@ -11,8 +11,14 @@ class CadastroUser extends StatefulWidget {
 
 class _CadastroUserState extends State<CadastroUser> {
   final _formKey = GlobalKey<FormState>();
+
   TextEditingController userController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
+  TextEditingController countryController = TextEditingController();
+  TextEditingController officeController = TextEditingController();
+  TextEditingController preferenceAreaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +71,7 @@ class _CadastroUserState extends State<CadastroUser> {
                   }
                   return null;
                 },
+                controller: emailController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'E-mail'),
               ),
@@ -92,6 +99,7 @@ class _CadastroUserState extends State<CadastroUser> {
                   }
                   return null;
                 },
+                controller: ageController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Idade'),
               ),
@@ -104,6 +112,7 @@ class _CadastroUserState extends State<CadastroUser> {
 
                   return null;
                 },
+                controller: countryController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'País'),
               ),
@@ -111,10 +120,11 @@ class _CadastroUserState extends State<CadastroUser> {
               TextFormField(
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Campo cargo obrigatório';
+                    return 'Campo trabalho obrigatório';
                   }
                   return null;
                 },
+                controller: officeController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Cargo'),
               ),
@@ -123,9 +133,10 @@ class _CadastroUserState extends State<CadastroUser> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Campo área de preferência obrigatório';
-                  }
+                  }                
                   return null;
                 },
+                controller: preferenceAreaController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Assunto de maior relevância do aplicativo'),
@@ -152,9 +163,22 @@ class _CadastroUserState extends State<CadastroUser> {
   onPressed() async {
     if (_formKey.currentState!.validate()) {
       String userDigitado = userController.text;
-      String passwordDigitado = passwordController.text;
+      String emailDigitado = emailController.text;
+      String passwordDigitado = passwordController.text;  
+      String ageDigitado = ageController.text;
+      String countryDigitado = countryController.text;
+      String officeDigitado = officeController.text;
+      String preferenceAreaDigitado = preferenceAreaController.text;
 
-      User user = User(username: userDigitado, password: passwordDigitado);
+      User user = User(
+        username: userDigitado,
+        email: emailDigitado,
+        password: passwordDigitado,
+        age: ageDigitado,
+        country: countryDigitado,
+        office: officeDigitado,
+        preferenceArea: preferenceAreaDigitado,
+        );
       await UserDao().salvarUser(user: user);
 
       showSnackBar('Usuário foi salvo com sucesso!');

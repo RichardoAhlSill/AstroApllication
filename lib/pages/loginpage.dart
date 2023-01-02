@@ -1,8 +1,14 @@
+import 'dart:ffi';
+import 'dart:convert';
+import 'package:astroapp/data/api/user_api.dart';
+import 'package:astroapp/domain/user.dart';
 import 'package:astroapp/pages/cadastropage.dart';
+import 'package:astroapp/pages/userpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:astroapp/data/bd/user_dao.dart';
+import 'package:http/http.dart' as http;
 
 import 'homePage.dart';
 
@@ -65,8 +71,8 @@ class _LoginPageState extends State<LoginPage> {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Campo Senha obrigatório';
-                            } else if (value.length < 8) {
-                              return 'Campo senha deve conter no mínimo 8 dígitos';
+                            } else if (value.length < 6) {
+                              return 'Campo senha deve conter no mínimo 6 dígitos';
                             }
                             return null;
                           },
@@ -125,36 +131,64 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  //ola
+  usuarios(user, pwd) {
+    // return FutureBuilder<List<User>>(
+    //   future: lista,
+    //   builder: (context, snapshot) {
+    //     if (snapshot.hasData) {
+    //       List<User> lista = snapshot.data ?? [];
+
+    //       return ListView.builder(
+    //         shrinkWrap: true,
+    //         physics: const NeverScrollableScrollPhysics(),
+    //         itemCount: lista.length,
+    //         itemBuilder: (BuildContext context, int index) {
+    //           for (var i = 0; i < lista.length; i++) {
+    //             if ((lista[index].email == user) &&
+    //                 (lista[index].password == pwd)) {
+    //               return UserPage(user: lista[index]);
+    //             }
+    //           }
+    //           return LoginPage();
+    //         },
+    //       );
+    //     } else if (snapshot.hasError) {
+    //       return Center(child: Text("Tem erro aqui, mano"));
+    //     }
+
+    //     return const Center(child: CircularProgressIndicator());
+    //   },
+    // );
+  }
 
   Future<void> onPressed() async {
     if (_formKey.currentState!.validate()) {
       String user = userController.text;
       String pwd = passwordController.text;
 
-      bool resultado = await UserDao().autenticar(user: user, password: pwd);
-
-      if (resultado) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return const HomePage();
-            },
-          ),
-        );
-      } else {
-        print("Usuário/Senha incorreto(s)");
-        final msg = SnackBar(
-          behavior: SnackBarBehavior.floating,
-          content: Text(
-            ("usuário/Senha incorretos"),
-          ),
-        );
-      }
-    } else {
-      print("Formulário inválido, cara");
-      print("Formulário inválido, cara");
+      var resultado = await UsuariosApi().listarUsersApi(user, pwd);
+      
+          if (resultado) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const HomePage();
+                },
+              ),
+            );
+          } else {
+            print("Usuário/Senha incorreto(s)");
+            final msg = SnackBar(
+              behavior: SnackBarBehavior.floating,
+              content: Text(
+                ("usuário/Senha incorretos"),
+              ),
+            );
+          }
+        } else {
+          print("Formulário inválido, cara");
+          print("Formulário inválido, cara");
     }
   }
 }
