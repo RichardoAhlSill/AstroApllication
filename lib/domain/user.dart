@@ -15,9 +15,4 @@ class User {
     data['password'] = password;
     return data;
   }
-
-  User.fromApiJson(Map<String, dynamic> json) {
-    username = json['username'];
-    password = json['password'];
-  }
 }

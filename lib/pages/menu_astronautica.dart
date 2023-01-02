@@ -1,9 +1,10 @@
-import 'package:astroapp/data/bd/assuntos_dao.dart';
+import 'package:astroapp/data/assuntos_dao.dart';
 import 'package:astroapp/domain/menu_astro.dart';
 import 'package:astroapp/widget/card_menu.dart';
 import 'package:flutter/material.dart';
 
-import '../data/bd/bd.dart';
+import '../data/bd.dart';
+
 
 class Menu_Astronautica extends StatefulWidget {
   const Menu_Astronautica({Key? key}) : super(key: key);
@@ -13,7 +14,8 @@ class Menu_Astronautica extends StatefulWidget {
 }
 
 class Menu_AstronauticaState extends State<Menu_Astronautica> {
-  Future<List<Menu_astro>> lista = AssuntosDao.listarPacotes('astronautica');
+
+Future<List<Menu_astro>> lista = AssuntosDao.listarPacotes('astronautica');
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,8 @@ class Menu_AstronauticaState extends State<Menu_Astronautica> {
           style: TextStyle(fontSize: 24),
         ),
       ),
+
+
       backgroundColor: Colors.grey[100],
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -38,6 +42,8 @@ class Menu_AstronauticaState extends State<Menu_Astronautica> {
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
+                      
+
                       children: [
                         Center(
                             child: Text(
@@ -51,7 +57,9 @@ class Menu_AstronauticaState extends State<Menu_Astronautica> {
                         Container(
                           margin: const EdgeInsets.only(bottom: 75.0),
                         ),
+
                         MenuListView(),
+
                       ],
                     ),
                   ),
@@ -65,9 +73,11 @@ class Menu_AstronauticaState extends State<Menu_Astronautica> {
   }
 
   MenuListView() {
+    
     return FutureBuilder<List<Menu_astro>>(
       future: lista,
       builder: ((context, snapshot) {
+
         if (snapshot.hasData) {
           List<Menu_astro> lista = snapshot.data ?? [];
 
@@ -85,4 +95,5 @@ class Menu_AstronauticaState extends State<Menu_Astronautica> {
       }),
     );
   }
+
 }

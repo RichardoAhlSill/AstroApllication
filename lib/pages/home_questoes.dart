@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:astroapp/data/api/questoes_api.dart';
-import 'package:astroapp/data/bd/questoes_dao.dart';
+import 'package:astroapp/data/questoes_dao.dart';
 import 'package:astroapp/pages/homePage.dart';
 import 'package:astroapp/widget/lista_questoes_card.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/domain/questoes.dart';
-import 'package:astroapp/data/bd/bd.dart';
+import 'package:astroapp/data/bd.dart';
 
 class HomeQuestoes extends StatefulWidget {
   const HomeQuestoes({Key? key}) : super(key: key);
@@ -55,8 +55,10 @@ class _HomeQuestoesState extends State<HomeQuestoes> {
             },
           );
         } else if (snapshot.hasError) {
+          print(snapshot.hasError);
           return Center(child: Text("Tem erro aqui, mano"));
         } else if (!snapshot.hasData) {
+          print(!snapshot.hasData);
           return Center(child: CircularProgressIndicator());
         }
 

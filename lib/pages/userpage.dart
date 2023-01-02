@@ -1,19 +1,19 @@
 import 'dart:io';
-import 'package:astroapp/pages/alterarDadosUser.dart';
-import 'package:astroapp/pages/trocarUser.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/domain/user.dart';
 import 'package:astroapp/pages/loginpage.dart';
-import '../data/bd/user_dao.dart';
+import '../data/user_dao.dart';
 
 class UserPage extends StatefulWidget {
-  const UserPage({Key? key}) : super(key: key);
+
+  const UserPage({Key? key}):super(key: key);
 
   @override
   State<UserPage> createState() => _UserPageState();
 }
 
 class _UserPageState extends State<UserPage> {
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -21,8 +21,7 @@ class _UserPageState extends State<UserPage> {
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 18, 30, 138),
           centerTitle: true,
-          title: const Text(
-            'AstroApp',
+          title: const Text('AstroApp',
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -31,12 +30,13 @@ class _UserPageState extends State<UserPage> {
     );
   }
 
-  buildBody() {
+  buildBody() {  
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          
           children: [
             const SizedBox(height: 48),
             Container(
@@ -53,9 +53,12 @@ class _UserPageState extends State<UserPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                
                 const SizedBox(height: 48),
                 const Text(
                   'E-mail: mfs22@aluno.ifal.edu.br',
@@ -65,15 +68,17 @@ class _UserPageState extends State<UserPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+
                 const SizedBox(height: 20),
                 const Text(
-                  'Idade: 18',
+                  'Cidade: Coité do Nóia - Alagoas',
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+
                 const SizedBox(height: 20),
                 const Text(
                   'País: Brasil',
@@ -83,6 +88,7 @@ class _UserPageState extends State<UserPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+
                 const SizedBox(height: 20),
                 const Text(
                   'Cargo: Técnico em Informática',
@@ -92,29 +98,22 @@ class _UserPageState extends State<UserPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Text(
-                  'Área de preferência: Astronomia',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+
               ],
             ),
+
+
+
             const SizedBox(height: 48),
             InkWell(
-              onTap: (() => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const AlterarDadosUser()))),
+              onTap: (){},
               child: Wrap(
                 children: [
                   Icon(
                     Icons.edit,
                     size: 25,
                   ),
+
                   Text(
                     'Alterar Dados',
                     style: TextStyle(
@@ -122,16 +121,18 @@ class _UserPageState extends State<UserPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                
                 ],
               ),
             ),
+
             const SizedBox(height: 20),
             InkWell(
-              onTap: () {
+              onTap: (){
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TrocarUser(),
+                    builder: (context) => const LoginPage(),
                   ),
                 );
               },
@@ -141,6 +142,7 @@ class _UserPageState extends State<UserPage> {
                     Icons.autorenew_outlined,
                     size: 25,
                   ),
+
                   Text(
                     'Trocar Usuário',
                     style: TextStyle(
@@ -148,18 +150,21 @@ class _UserPageState extends State<UserPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                
                 ],
               ),
             ),
+
             const SizedBox(height: 20),
             InkWell(
-              onTap: deleteUser,
+              onTap: (){},
               child: Wrap(
                 children: [
                   Icon(
                     Icons.delete_outlined,
                     size: 25,
                   ),
+
                   Text(
                     'Remover Usuário',
                     style: TextStyle(
@@ -167,32 +172,19 @@ class _UserPageState extends State<UserPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                
                 ],
               ),
             ),
+
           ],
         ),
       ),
     );
   }
-
-  deleteUser() {
-    AlertDialog alerta = const AlertDialog(
-      title: Text(
-        "Tem certeza que deseja excluir o usuário?",
-        style: TextStyle(
-          color: Color(0xFF3E7F34),
-          fontSize: 15,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-      //Alterar aqui
-    );
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alerta;
-      },
-    );
-  }
 }
+
+
+
+
+

@@ -1,4 +1,4 @@
-import 'package:astroapp/data/bd/bd.dart';
+import 'package:astroapp/data/bd.dart';
 import 'package:astroapp/domain/sobre.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';

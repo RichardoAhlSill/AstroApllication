@@ -1,7 +1,7 @@
 import 'package:astroapp/pages/assuntosQuest_page.dart';
 import 'package:flutter/material.dart';
 
-import '../../data/bd/assuntos_dao.dart';
+import '../../data/assuntos_dao.dart';
 import '../../domain/menu_astro.dart';
 import '../../widget/card_assuntos.dart';
 

@@ -1,46 +1,54 @@
 class Nasa {
-  late String apod_site;
+  late String serviceVersion;
   late String copyright;
   late String date;
-  late String description;
+  late String explanation;
   late String hdurl;
-  late String media_type;
+  late String mediaType;
   late String title;
   late String url;
 
   Nasa({
-    required this.apod_site,
-    required this.copyright,
-    required this.date,
-    required this.description,
-    required this.hdurl,
-    required this.media_type,
-    required this.title,
-    required this.url,
+      required this.serviceVersion,
+      required this.copyright,
+      required this.date,
+      required this.explanation,
+      required this.hdurl,
+      required this.mediaType,
+      required this.title,
+      required this.url,
   });
 
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['serviceVersion'] = serviceVersion;
+    data['copyright'] = copyright;
+    data['date'] = date;
+    data['explanation'] = explanation;
+    data['hdurl'] = hdurl;
+    data['media_type'] = mediaType;
+    data['title'] = title;
+    data['url'] = url;
+    return data;
+  }
   Nasa.fromJson(Map<String, dynamic> json) {
-    apod_site = json['apod_site'];
+    serviceVersion = json['serviceVersion'];
     copyright = json['copyright'];
     date = json['date'];
-    description = json['description'];
+    explanation = json['explanation'];
     hdurl = json['hdurl'];
-    media_type = json['media_type'];
+    mediaType = json['mediaType'];
     title = json['title'];
     url = json['url'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['apod_site'] = this.apod_site;
-    data['copyright'] = this.copyright;
-    data['date'] = this.date;
-    data['description'] = this.description;
-    data['hdurl'] = this.hdurl;
-    data['media_type'] = this.media_type;
-    data['title'] = this.title;
-    data['url'] = this.url;
-
-    return data;
+  Nasa.fromApiNasaJson(Map<String, dynamic> json) {
+    serviceVersion = json['serviceVersion'];
+    copyright = json['copyright'];
+    date = json['date'];
+    explanation = json['explanation'];
+    hdurl = json['hdurl'];
+    mediaType = json['mediaType'];
+    title = json['title'];
+    url = json['url'];
   }
 }

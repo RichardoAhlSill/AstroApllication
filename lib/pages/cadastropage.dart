@@ -1,4 +1,4 @@
-import 'package:astroapp/data/bd/user_dao.dart';
+import 'package:astroapp/data/user_dao.dart';
 import 'package:astroapp/domain/user.dart';
 import 'package:flutter/material.dart';
 
@@ -21,8 +21,7 @@ class _CadastroUserState extends State<CadastroUser> {
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 18, 30, 138),
           centerTitle: true,
-          title: const Text(
-            'AstroApp',
+          title: const Text('AstroApp',
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -32,9 +31,11 @@ class _CadastroUserState extends State<CadastroUser> {
   }
 
   buildBody() {
+    
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
+        
         child: Form(
           key: _formKey,
           child: Column(
@@ -49,24 +50,13 @@ class _CadastroUserState extends State<CadastroUser> {
               TextFormField(
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Campo usuário obrigatório';
+                    return 'Campo e-mail obrigatório';
                   }
                   return null;
                 },
                 controller: userController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Usuário'),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Campo e-mail obrigatório';
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'E-mail'),
               ),
               const SizedBox(height: 16),
               TextFormField(
@@ -83,62 +73,20 @@ class _CadastroUserState extends State<CadastroUser> {
                 },
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Senha'),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Campo idade obrigatório';
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'Idade'),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Campo País obrigatório';
-                  }
-
-                  return null;
-                },
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'País'),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Campo cargo obrigatório';
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'Cargo'),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Campo área de preferência obrigatório';
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Assunto de maior relevância do aplicativo'),
-              ),
+              ),  
               const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: onPressed,
-                style: ElevatedButton.styleFrom(primary: Colors.black),
+                style:
+                    ElevatedButton.styleFrom(primary: Colors.black),
                 child: const Padding(
                   padding: EdgeInsets.symmetric(vertical: 12.0),
                   child: Text(
                     'Cadastrar Usuário',
-                    style: TextStyle(fontSize: 20, color: Colors.yellow),
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.yellow
+                    ),
                   ),
                 ),
               ),

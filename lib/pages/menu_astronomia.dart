@@ -1,7 +1,7 @@
-import 'package:astroapp/data/bd/assuntos_dao.dart';
+import 'package:astroapp/data/assuntos_dao.dart';
 import 'package:flutter/material.dart';
 
-import '../data/bd/bd.dart';
+import '../data/bd.dart';
 import '../domain/menu_astro.dart';
 import '../widget/card_menu.dart';
 

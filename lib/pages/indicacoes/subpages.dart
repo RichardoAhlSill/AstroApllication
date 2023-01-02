@@ -1,4 +1,4 @@
-import 'package:astroapp/data/bd/indicacoes_dao.dart';
+import 'package:astroapp/data/indicacoes_dao.dart';
 import 'package:astroapp/domain/indicacoes/subpages_domain.dart';
 import 'package:astroapp/widget/indicacoes/sub_pages_card.dart';
 import 'package:flutter/material.dart';
@@ -43,24 +43,27 @@ class _SubPagesState extends State<SubPages> {
 
   subPagesListView() {
     Future<List<SubPagesDomain>> lista_subpages =
-        IndicacoesDAO.listarSubpagesIndicacoes(widget.tipoIndicacao);
-
+          IndicacoesDAO.listarSubpagesIndicacoes(widget.tipoIndicacao);
+    
     return FutureBuilder<List<SubPagesDomain>>(
-        future: lista_subpages,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            List<SubPagesDomain> lista_subpages = snapshot.data ?? [];
+          future: lista_subpages,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<SubPagesDomain> lista_subpages = snapshot.data ?? [];
 
-            return ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: lista_subpages.length,
-              itemBuilder: (context, index) {
-                return SubPagesCard(lista_subpages: lista_subpages[index]);
-              },
-            );
+              return ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: lista_subpages.length,
+                itemBuilder: (context, index) {
+                  return SubPagesCard(lista_subpages: lista_subpages[index]);
+                },
+              );
+            }
+            return Center(child: CircularProgressIndicator());
           }
-          return Center(child: CircularProgressIndicator());
-        });
+        );
+    
   }
+
 }

@@ -152,7 +152,7 @@ class _CardQuestoesState extends State<CardQuestoes> {
   acertouMensagem() {
     AlertDialog alerta = const AlertDialog(
       title: Text(
-          "Parábens! Você Acertou!",
+        "Parábens! Você Acertou!",
         style: TextStyle(
           color: Color(0xFF3E7F34),
           fontSize: 15,
@@ -170,7 +170,7 @@ class _CardQuestoesState extends State<CardQuestoes> {
   errouMensagem() {
     AlertDialog alerta = const AlertDialog(
       title: Text(
-          "Que Pena, Você Errou! Tente de novo! ",
+        "Que Pena, Você Errou! Tente de novo! ",
         style: TextStyle(
           color: Color(0xFFAA0718),
           fontSize: 15,

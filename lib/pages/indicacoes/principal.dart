@@ -1,4 +1,4 @@
-import 'package:astroapp/data/bd/indicacoes_dao.dart';
+import 'package:astroapp/data/indicacoes_dao.dart';
 import 'package:astroapp/domain/indicacoes/principal_domain.dart';
 import 'package:astroapp/widget/indicacoes/indicacoesCard.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +11,8 @@ class IndicacoesPage extends StatefulWidget {
 }
 
 class _IndicacoesPageState extends State<IndicacoesPage> {
-  Future<List<PrincipalDomain>> lista_principal =
-      IndicacoesDAO.listarPrincipalIndicacoes();
+  
+  Future<List<PrincipalDomain>> lista_principal = IndicacoesDAO.listarPrincipalIndicacoes();
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +27,11 @@ class _IndicacoesPageState extends State<IndicacoesPage> {
         child: ListView(
           children: [
             const Text(
-              'Indicações',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 32),
-            ),
-            SizedBox(
-              height: 24,
-            ),
+            'Indicações',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 32),
+          ),
+            SizedBox(height: 24,),
             principalListView()
           ],
         ),
@@ -45,7 +43,8 @@ class _IndicacoesPageState extends State<IndicacoesPage> {
     return FutureBuilder<List<PrincipalDomain>>(
       future: lista_principal,
       builder: ((context, snapshot) {
-        if (snapshot.hasData) {
+        
+        if(snapshot.hasData) {
           List<PrincipalDomain> lista_principal = snapshot.data ?? [];
 
           return ListView.builder(
@@ -53,15 +52,15 @@ class _IndicacoesPageState extends State<IndicacoesPage> {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: lista_principal.length,
             itemBuilder: (context, index) {
-              return IndicacoesCard(
-                principal_domain: lista_principal[index],
-              );
+              return IndicacoesCard(principal_domain: lista_principal[index],);
             },
           );
         }
 
         return const Center(child: CircularProgressIndicator());
-      }),
+
+       }
+      ),
     );
   }
 }

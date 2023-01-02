@@ -19,6 +19,7 @@ class QuestoesApi {
         var result = (jsonDecode(utf8.decode(response.bodyBytes)));
 
         for (var json in result) {
+          print("Eu venho até aqui...");
           Questoes questao = Questoes.fromApiJson(json);
           lista.add(questao);
         }

@@ -1,4 +1,4 @@
-import 'package:astroapp/data/bd/indicacoes_dao.dart';
+import 'package:astroapp/data/indicacoes_dao.dart';
 import 'package:astroapp/domain/indicacoes/redes_domain.dart';
 import 'package:astroapp/widget/indicacoes/redes.dart';
 import 'package:flutter/material.dart';

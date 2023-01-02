@@ -14,15 +14,15 @@ class Questoes {
 
   Questoes(
       {required this.imagem,
-      required this.titulo,
-      required this.alternativa1,
-      required this.alternativa2,
-      required this.alternativa3,
-      required this.alternativa4,
-      required this.alternativa5,
-      required this.alternativaCerta,
-      required this.assunto,
-      required this.nivel});
+        required this.titulo,
+        required this.alternativa1,
+        required this.alternativa2,
+        required this.alternativa3,
+        required this.alternativa4,
+        required this.alternativa5,
+        required this.alternativaCerta,
+        required this.assunto,
+        required this.nivel});
 
   Map<String, Object?> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
