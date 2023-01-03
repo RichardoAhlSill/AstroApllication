@@ -22,6 +22,7 @@ class QuestoesApi {
           print("Eu venho até aqui...");
           Questoes questao = Questoes.fromApiJson(json);
           lista.add(questao);
+          print("Teste Lista Questões: ${lista}");
         }
       }
     } catch (e) {

@@ -9,14 +9,14 @@ class Nasa {
   late String url;
 
   Nasa({
-      required this.serviceVersion,
-      required this.copyright,
-      required this.date,
-      required this.explanation,
-      required this.hdurl,
-      required this.mediaType,
-      required this.title,
-      required this.url,
+    required this.serviceVersion,
+    required this.copyright,
+    required this.date,
+    required this.explanation,
+    required this.hdurl,
+    required this.mediaType,
+    required this.title,
+    required this.url,
   });
 
   Map<String, dynamic> toJson() {
@@ -31,6 +31,7 @@ class Nasa {
     data['url'] = url;
     return data;
   }
+
   Nasa.fromJson(Map<String, dynamic> json) {
     serviceVersion = json['serviceVersion'];
     copyright = json['copyright'];
@@ -41,13 +42,14 @@ class Nasa {
     title = json['title'];
     url = json['url'];
   }
+
   Nasa.fromApiNasaJson(Map<String, dynamic> json) {
-    serviceVersion = json['serviceVersion'];
     copyright = json['copyright'];
     date = json['date'];
     explanation = json['explanation'];
     hdurl = json['hdurl'];
-    mediaType = json['mediaType'];
+    mediaType = json['media_type'];
+    serviceVersion = json['service_version'];
     title = json['title'];
     url = json['url'];
   }

@@ -60,222 +60,227 @@ class _HomePageState extends State<HomePage> {
         ),
         drawer: Drawer(
           backgroundColor: const Color.fromARGB(255, 18, 30, 138),
-          child: Column(
+          child: ListView(
             children: [
-              Container(
-                margin:
+              Column(
+                children: [
+                  Container(
+                    margin:
                     const EdgeInsets.symmetric(vertical: 48, horizontal: 16),
-                child: InkWell(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 72,
-                        width: 64,
-                        color: Colors.yellow,
-                        child: const Icon(
-                          Icons.person,
-                          size: 50,
-                        ),
-                      ),
-                      Container(
-                        width: 204,
-                        height: 72,
-                        color: Colors.white,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text(
-                              'Marcos',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
+                    child: InkWell(
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 72,
+                            width: 64,
+                            color: Colors.yellow,
+                            child: const Icon(
+                              Icons.person,
+                              size: 50,
                             ),
-                            Text(
-                              'mfs22@aluno.ifal.edu.br',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
+                          ),
+                          Container(
+                            width: 204,
+                            height: 72,
+                            color: Colors.white,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  'Marcos',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                Text(
+                                  'mfs22@aluno.ifal.edu.br',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const UserPage()),
+                        );
+                      },
+                    ),
                   ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const UserPage()),
-                    );
-                  },
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(
-                  vertical: 0,
-                  horizontal: 16,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    InkWell(
-                        child: const Text(
-                          'Notícias',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24,
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => NoticiasPage(),
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: 16,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        InkWell(
+                            child: const Text(
+                              'Notícias',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24,
+                              ),
                             ),
-                          );
-                        }),
-                    SizedBox(height: 16),
-                    InkWell(
-                        child: const Text(
-                          'Astronáutica',
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => NoticiasPage(),
+                                ),
+                              );
+                            }),
+                        SizedBox(height: 16),
+                        InkWell(
+                            child: const Text(
+                              'Astronáutica',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24,
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Menu_Astronautica()),
+                              );
+                            }),
+                        SizedBox(height: 16),
+                        InkWell(
+                          child: const Text(
+                            'Astronomia',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Menu_Astronomia()),
+                            );
+                          },
+                        ),
+                        const SizedBox(height: 16),
+                        InkWell(
+                          child: const Text(
+                            'Indicações',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                            ),
+                          ),
+                          onTap: onTap,
+                        ),
+                        SizedBox(height: 16),
+                        const Text(
+                          'Quiz',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 24,
                           ),
                         ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Menu_Astronautica()),
-                          );
-                        }),
-                    SizedBox(height: 16),
-                    InkWell(
-                      child: const Text(
-                        'Astronomia',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Menu_Astronomia()),
-                        );
-                      },
-                    ),
-                    const SizedBox(height: 16),
-                    InkWell(
-                      child: const Text(
-                        'Indicações',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                        ),
-                      ),
-                      onTap: onTap,
-                    ),
-                    SizedBox(height: 16),
-                    const Text(
-                      'Quiz',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    InkWell(
-                      child: const Text(
-                        'Questões',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AssuntosQuestoes(),
+                        SizedBox(height: 16),
+                        InkWell(
+                          child: const Text(
+                            'Questões',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                            ),
                           ),
-                        );
-                      },
-                    ),
-                    SizedBox(height: 16),
-                    InkWell(
-                      child: const Text(
-                        'Novidades',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AssuntosQuestoes(),
+                              ),
+                            );
+                          },
                         ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: ((context) => NovidadesPage()),
+                        SizedBox(height: 16),
+                        InkWell(
+                          child: const Text(
+                            'Novidades',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                            ),
                           ),
-                        );
-                      },
-                    ),
-                    SizedBox(height: 16),
-                    InkWell(
-                      child: const Text(
-                        'Explore',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: ((context) => NovidadesPage()),
+                              ),
+                            );
+                          },
                         ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NasaPage()),
-                        );
-                      },
-                    ),
-                    SizedBox(height: 16),
-                    InkWell(
-                      child: const Text(
-                        'Extra',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
+                        SizedBox(height: 16),
+                        InkWell(
+                          child: const Text(
+                            'Imagem do Dia',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => NasaPage()),
+                            );
+                          },
                         ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Extra(listaSobre: BD.listaSobre)),
-                        );
-                      },
+                        SizedBox(height: 16),
+                        InkWell(
+                          child: const Text(
+                            'Extra',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Extra(listaSobre: BD.listaSobre)),
+                            );
+                          },
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  Container(
+                      margin: EdgeInsetsDirectional.only(top: 15),
+                      width: 100,
+                      height: 100,
+                      child: Image.asset('assets/logo_astroapp.png')),
+                ],
               ),
-              Container(
-                  margin: EdgeInsetsDirectional.only(top: 15),
-                  width: 100,
-                  height: 100,
-                  child: Image.asset('assets/logo_astroapp.png')),
             ],
           ),
         ),
+
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: ListView(

@@ -13,7 +13,7 @@ class NasaPage extends StatefulWidget {
 
 class _NasaPageState extends State<NasaPage> {
 
-  Future<List<Nasa>> lista = NasaApi().listarApi();
+  Future<Nasa> lista = NasaApi().listarApi();
 
   @override
   Widget build(BuildContext context) {
@@ -37,27 +37,21 @@ class _NasaPageState extends State<NasaPage> {
   }
 
   buildListView() {
-    return FutureBuilder<List<Nasa>>(
+    return FutureBuilder<Nasa>(
       future: lista,
       builder: (context, snapshot) {
 
         if (snapshot.hasData) {
-          List<Nasa> list = snapshot.data ?? [];
+          Nasa list = snapshot.data!;
 
-          return ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: list.length,
-            itemBuilder: (BuildContext context, int index) {
-              return CardNasa(nasa: list[index]);
-            },
+          return CardNasa(
+            nasa: list,
           );
+
         } else if (snapshot.hasError) {
-          print(snapshot.hasError);
-          return Center(child: Text("Tem erro aqui, mano"));
+          return const Center(child: Text("Tem erro aqui, mano"));
         } else if (!snapshot.hasData) {
-          print(!snapshot.hasData);
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         return const Center(child: CircularProgressIndicator());

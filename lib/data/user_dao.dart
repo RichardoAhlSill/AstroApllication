@@ -34,7 +34,7 @@ class UserDao {
 
     List<User> lista = <User>[];
     for (var json in result) {
-      User usuario = User.fromJson(json);
+      User usuario = User.fromApiJson(json);
       lista.add(usuario);
     }
 

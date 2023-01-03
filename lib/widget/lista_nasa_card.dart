@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:astroapp/domain/nasa.dart';
+import '../data/api/nasa_api.dart';
+import '../pages/detalhes_page.dart';
 
 class CardNasa extends StatefulWidget {
   final Nasa nasa;
@@ -17,6 +19,18 @@ class _CardNasaState extends State<CardNasa> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: (){
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) {
+                return DetalhesPage(
+                  nasa: widget.nasa,
+                );
+              },
+          ),
+        );
+      },
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
@@ -32,7 +46,7 @@ class _CardNasaState extends State<CardNasa> {
 
                     Text(
                       widget.nasa.title,
-                      textAlign: TextAlign.justify,
+                      textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
