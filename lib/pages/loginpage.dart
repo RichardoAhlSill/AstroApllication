@@ -132,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
       String user = userController.text;
       String pwd = passwordController.text;
 
-      bool resultado = await UserDao().autenticar(user: user, password: pwd);
+      /*bool resultado = await UserDao().autenticar(user: user, password: pwd);
 
       if (resultado) {
         Navigator.pushReplacement(
@@ -143,7 +143,8 @@ class _LoginPageState extends State<LoginPage> {
             },
           ),
         );
-      } else {
+      }
+       else {
         print("Usuário/Senha incorreto(s)");
         final msg = SnackBar(
           behavior: SnackBarBehavior.floating,
@@ -151,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
             ("usuário/Senha incorretos"),
           ),
         );
-      }
+      }*/
     } else {
       print("Formulário inválido, cara");
       print("Formulário inválido, cara");

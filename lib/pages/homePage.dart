@@ -1,4 +1,7 @@
+import 'package:astroapp/data/api/user_api.dart';
+import 'package:astroapp/domain/user.dart';
 import 'package:astroapp/pages/conteudos_astronomia/planetas.dart';
+import 'package:astroapp/data/bd/noticias_dao.dart';
 import 'package:astroapp/domain/topicos.dart';
 import 'package:astroapp/pages/indicacoes/principal.dart';
 import 'package:astroapp/pages/menu_astronautica.dart';
@@ -15,6 +18,7 @@ import '../domain/noticias.dart';
 import '../widget/lista_noticias_card.dart';
 import 'package:astroapp/data/bd/bd.dart';
 
+
 import '../widget/lista_topicos_card.dart';
 import 'assuntosQuest_page.dart';
 
@@ -26,7 +30,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Future<List<Noticias>> listaNoticias = BD.getCardNoticias();
+  Future<List<Noticias>> listaNoticias = NoticiasDao().getCardNoticias();
   Future<List<Topicos>> listaTopicos = BD.getCardTopicos();
 
   @override
@@ -102,7 +106,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  onTap: () {
+                  onTap: () async {
+                    Map<String, dynamic> user = await UsuariosApi().listEspecificUserApi('5464645');
+                    // ignore: avoid_print
+                    print(user);
                     Navigator.push(
                       context,
                       MaterialPageRoute(

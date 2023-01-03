@@ -154,8 +154,8 @@ class _CadastroUserState extends State<CadastroUser> {
       String userDigitado = userController.text;
       String passwordDigitado = passwordController.text;
 
-      User user = User(username: userDigitado, password: passwordDigitado);
-      await UserDao().salvarUser(user: user);
+      //User user = User(username: userDigitado, password: passwordDigitado);
+      //await UserDao().salvarUser(user: user);
 
       showSnackBar('Usuário foi salvo com sucesso!');
       Navigator.pop(context);

@@ -4,6 +4,8 @@ import 'package:astroapp/pages/indicacoes/principal.dart';
 import 'package:astroapp/pages/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'pages/homePage.dart';
+import 'dart:ui';
+
 //import 'package:url_launcher/url_launcher.dart';
 
 void main() {

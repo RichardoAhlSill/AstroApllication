@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:astroapp/data/api/user_api.dart';
 import 'package:astroapp/pages/alterarDadosUser.dart';
 import 'package:astroapp/pages/trocarUser.dart';
 import 'package:flutter/material.dart';
@@ -7,14 +8,20 @@ import 'package:astroapp/pages/loginpage.dart';
 import '../data/bd/user_dao.dart';
 
 class UserPage extends StatefulWidget {
+  //final Map<String, dynamic> user;
   const UserPage({Key? key}) : super(key: key);
 
   @override
   State<UserPage> createState() => _UserPageState();
 }
 
+
+
 class _UserPageState extends State<UserPage> {
   @override
+
+  
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(

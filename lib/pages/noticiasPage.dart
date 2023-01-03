@@ -52,11 +52,6 @@ class _NoticiasPageState extends State<NoticiasPage> {
 
   buildListView() {
     return InkWell(
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => NoticiasI(),
-        ));
-      },
       child: FutureBuilder<List<Noticias>>(
         future: listaNoticias,
         builder: (context, snapshot) {
@@ -76,6 +71,11 @@ class _NoticiasPageState extends State<NoticiasPage> {
           return const Center(child: CircularProgressIndicator());
         },
       ),
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => NoticiasI(),
+        ));
+      },
     );
   }
 
