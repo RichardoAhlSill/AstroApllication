@@ -28,8 +28,8 @@ class UsuariosApi {
     return listaUser;
   }
 
-  Future<Map<String, dynamic>> listEspecificUserApi(String id) async {
-    String id = await filtrarIdPorNome();
+  Future<Map<String, dynamic>> listEspecificUserApi(String emailUser) async {
+    String id = await filtrarIdPorNome(emailUser);
 
     var url = Uri.parse(baseUrl + "users/$id");
     var response = await http.get(url);
@@ -44,7 +44,6 @@ class UsuariosApi {
         preferenceArea: 'Astronomia');
 
     Map<String, dynamic> user = userString.toApiJson();
-    
 
     try {
       if (response.statusCode == 200) {
@@ -61,24 +60,24 @@ class UsuariosApi {
     }
     return user;
   }
-  
-  Future<String> filtrarIdPorNome() async {
+
+  Future<String> filtrarIdPorNome(String emailUser) async {
     var urlNome = Uri.parse(baseUrl + "users/");
     var response = await http.get(urlNome);
     String nome;
     if (response.statusCode == 200) {
-        var result = (jsonDecode(utf8.decode(response.bodyBytes)));
+      var result = (jsonDecode(utf8.decode(response.bodyBytes)));
 
-        print(result);
+      print(result);
 
-        for (var json in result ){
-          // fazer um if
-        }
+      for (var json in result) {
+        // fazer um if
+      }
 
-        /*for (var json in result) {
+      /*for (var json in result) {
           user = User.fromApiJson(json);
         }*/
-      }
+    }
     return 'oi';
   }
 }
