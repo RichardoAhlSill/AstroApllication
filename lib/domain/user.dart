@@ -6,8 +6,10 @@ class User {
   late String country;
   late String office;
   late String preferenceArea;
+  late String id;
 
   User({
+    required this.id,
     required this.username,
     required this.password,
     required this.email,
@@ -18,36 +20,38 @@ class User {
   });
 
   User.fromJson(Map<String, dynamic> json) {
+    id = json['_id'];
     username = json['username'];
-		email = json['email'];
+    email = json['email'];
     password = json['password'];
     username = json['name'];
-		password = json['password'];
-		age = json['age'];
-		country = json['country'];
-		office = json['office'];
-		preferenceArea = json['preferenceArea'];
+    password = json['password'];
+    age = json['age'];
+    country = json['country'];
+    office = json['office'];
+    preferenceArea = json['preferenceArea'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['username'] = username; 
-		data['email'] = email; 
-    data['password'] = password; 
-		data['age'] = age; 
-		data['country'] = country; 
-		data['office'] = office; 
-		data['preferenceArea'] = preferenceArea; 
+    data['username'] = username;
+    data['email'] = email;
+    data['password'] = password;
+    data['age'] = age;
+    data['country'] = country;
+    data['office'] = office;
+    data['preferenceArea'] = preferenceArea;
     return data;
   }
 
   User.fromApiJson(Map<String, dynamic> json) {
     username = json['name'];
-		email = json['email'];  
+    email = json['email'];
     password = json['password'];
-		age = json['age'];
-		country = json['country'];
-		office = json['office'];
-		preferenceArea = json['preferenceArea'];
+    age = json['age'];
+    country = json['country'];
+    office = json['office'];
+    preferenceArea = json['preferenceArea'];
+    id = json['_id'];
   }
 }

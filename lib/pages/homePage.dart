@@ -11,7 +11,9 @@ import 'package:astroapp/pages/userpage.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/pages/cadastropage.dart';
 import 'package:astroapp/pages/loginpage.dart';
+import '../data/api/user_api.dart';
 import '../domain/noticias.dart';
+import '../domain/user.dart';
 import '../widget/lista_noticias_card.dart';
 import 'package:astroapp/data/bd/bd.dart';
 
@@ -19,7 +21,8 @@ import '../widget/lista_topicos_card.dart';
 import 'assuntosQuest_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  User user = UsuariosApi().manterUser();
+  HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -82,16 +85,16 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Text(
-                              'Marcos',
+                              widget.user.username,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 16,
                               ),
                             ),
                             Text(
-                              'mfs22@aluno.ifal.edu.br',
+                              widget.user.email,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 12,
@@ -105,8 +108,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => LoginPage()),
+                      MaterialPageRoute(builder: (context) => logado()),
                     ); //pensar
                   },
                 ),
@@ -444,5 +446,13 @@ class _HomePageState extends State<HomePage> {
         },
       ),
     );
+  }
+
+  logado() {
+    if (widget.user.age != "") {
+      return UserPage();
+    } else {
+      return LoginPage();
+    }
   }
 }

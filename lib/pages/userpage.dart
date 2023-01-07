@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:astroapp/data/api/user_api.dart';
 import 'package:astroapp/pages/alterarDadosUser.dart';
 import 'package:astroapp/pages/trocarUser.dart';
 import 'package:flutter/material.dart';
@@ -6,13 +7,13 @@ import 'package:astroapp/domain/user.dart';
 import 'package:astroapp/pages/loginpage.dart';
 import '../data/bd/user_dao.dart';
 
-
-
 class UserPage extends StatefulWidget {
 
-  final User user;
+  User user = UsuariosApi().manterUser();
 
-  const UserPage({Key? key, required this.user,}) : super(key: key);
+  UserPage({
+    Key? key,    
+  }) : super(key: key);
 
   @override
   State<UserPage> createState() => _UserPageState();
@@ -51,7 +52,7 @@ class _UserPageState extends State<UserPage> {
               ),
             ),
             Text(
-              'Marcos',
+              widget.user.username,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 40,
@@ -63,7 +64,7 @@ class _UserPageState extends State<UserPage> {
               children: [
                 const SizedBox(height: 48),
                 Text(
-                  "E-mail: " + widget.user.email, 
+                  "E-mail: " + widget.user.email,
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 22,
@@ -90,7 +91,7 @@ class _UserPageState extends State<UserPage> {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  "Cargo: " + widget.user.country,
+                  "Cargo: " + widget.user.office,
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 22,

@@ -19,9 +19,9 @@ class PostHttpOverrides extends HttpOverrides{
 void main() {
   HttpOverrides.global = new PostHttpOverrides();
   runApp(
-    const MaterialApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: HomePage(),
     ),
   );
 }

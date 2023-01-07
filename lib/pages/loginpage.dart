@@ -130,64 +130,33 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
-  usuarios(user, pwd) {
-    // return FutureBuilder<List<User>>(
-    //   future: lista,
-    //   builder: (context, snapshot) {
-    //     if (snapshot.hasData) {
-    //       List<User> lista = snapshot.data ?? [];
-
-    //       return ListView.builder(
-    //         shrinkWrap: true,
-    //         physics: const NeverScrollableScrollPhysics(),
-    //         itemCount: lista.length,
-    //         itemBuilder: (BuildContext context, int index) {
-    //           for (var i = 0; i < lista.length; i++) {
-    //             if ((lista[index].email == user) &&
-    //                 (lista[index].password == pwd)) {
-    //               return UserPage(user: lista[index]);
-    //             }
-    //           }
-    //           return LoginPage();
-    //         },
-    //       );
-    //     } else if (snapshot.hasError) {
-    //       return Center(child: Text("Tem erro aqui, mano"));
-    //     }
-
-    //     return const Center(child: CircularProgressIndicator());
-    //   },
-    // );
-  }
+    
 
   Future<void> onPressed() async {
     if (_formKey.currentState!.validate()) {
       String user = userController.text;
       String pwd = passwordController.text;
 
-      var resultado = await UsuariosApi().listarUsersApi(user, pwd);
-      
-          if (resultado) {
+      User usuario = await UsuariosApi().autenticar(user, pwd);      
+          if (usuario.age.isNotEmpty) {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return const HomePage();
+                  return HomePage();
                 },
               ),
             );
           } else {
-            print("Usuário/Senha incorreto(s)");
-            final msg = SnackBar(
+             final  msg =  SnackBar(
               behavior: SnackBarBehavior.floating,
               content: Text(
-                ("usuário/Senha incorretos"),
+                ("Usuario/Senha incorretos"),
               ),
-            );
+             );
+              ScaffoldMessenger.of(context).showSnackBar(msg);
           }
-        } else {
-          print("Formulário inválido, cara");
+        } else {          
           print("Formulário inválido, cara");
     }
   }

@@ -1,3 +1,4 @@
+import 'package:astroapp/data/api/user_api.dart';
 import 'package:astroapp/data/bd/user_dao.dart';
 import 'package:astroapp/domain/user.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,9 @@ class CadastroUser extends StatefulWidget {
 
 class _CadastroUserState extends State<CadastroUser> {
   final _formKey = GlobalKey<FormState>();
+
+  User logado = UsuariosApi().manterUser();
+
 
   TextEditingController userController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -162,6 +166,7 @@ class _CadastroUserState extends State<CadastroUser> {
 
   onPressed() async {
     if (_formKey.currentState!.validate()) {
+      
       String userDigitado = userController.text;
       String emailDigitado = emailController.text;
       String passwordDigitado = passwordController.text;  
@@ -171,6 +176,7 @@ class _CadastroUserState extends State<CadastroUser> {
       String preferenceAreaDigitado = preferenceAreaController.text;
 
       User user = User(
+        id: logado.id,
         username: userDigitado,
         email: emailDigitado,
         password: passwordDigitado,
@@ -179,7 +185,8 @@ class _CadastroUserState extends State<CadastroUser> {
         office: officeDigitado,
         preferenceArea: preferenceAreaDigitado,
         );
-      await UserDao().salvarUser(user: user);
+
+      UsuariosApi().cadastrar(user: user);
 
       showSnackBar('Usuário foi salvo com sucesso!');
       Navigator.pop(context);

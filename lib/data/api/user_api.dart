@@ -5,13 +5,22 @@ import 'package:astroapp/data/bd/user_dao.dart';
 import 'package:astroapp/domain/user.dart';
 import 'package:http/http.dart' as http;
 
+User logado = User(
+    id: "",
+    username: "",
+    password: "",
+    email: "",
+    age: "",
+    country: "",
+    office: "",
+    preferenceArea: "");
+
 class UsuariosApi {
   String baseUrl = "https://api-production-b057.up.railway.app";
 
-
-  listarUsersApi(user1, pwd) async {
+  autenticar(user1, pwd) async {
     var url = Uri.parse(baseUrl + "/users");
-    var response = await http.get(url); 
+    var response = await http.get(url);
 
     try {
       if (response.statusCode == 200) {
@@ -21,13 +30,53 @@ class UsuariosApi {
           User user = User.fromApiJson(json);
 
           if ((user1 == user.email) && (pwd == user.password)) {
-            return true;
+            logado = user;
+            return user;
           }
         }
       }
     } catch (e) {
-      throw Exception('erro');
+      throw Exception(e);
     }
-    return false;
+
+    return null;
+  }
+
+  cadastrar({required User user}) async {
+    try {
+      var response =
+          await http.post(Uri.parse(baseUrl + "/users/create"), body: {
+        "name": user.username,
+        "email": user.email,
+        "password": user.password,
+        "age": user.age,
+        "country": user.country,
+        "office": user.office,
+        "preferenceArea": user.preferenceArea,
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  atualizarUser({required User user}) async {
+    var url = Uri.parse(baseUrl + "/users/create/${user.id}");
+    await http.put(
+      url,
+       body: {
+        "name": user.username,
+        "email": user.email,
+        "password": user.password,
+        "age": user.age,
+        "country": user.country,
+        "office": user.office,
+        "preferenceArea": user.preferenceArea,
+       }
+       );
+       logado = user;
+  }
+
+  manterUser() {
+    return logado;
   }
 }
