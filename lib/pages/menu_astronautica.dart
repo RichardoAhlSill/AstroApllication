@@ -45,11 +45,11 @@ Future<List<Menu_astro>> lista = AssuntosDao.listarPacotes('astronautica');
                       
 
                       children: [
-                        Center(
+                        const Center(
                             child: Text(
                           "Astronáutica",
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 32,
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),

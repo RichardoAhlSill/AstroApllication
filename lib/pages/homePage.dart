@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 18, 30, 138),
           centerTitle: true,
-          title: const Text('AstroAPP'),
+          title: const Text('AstroApp'),
           actions: [
             // Método pra colocar imagem ao centro (talvez dê errado dependendo da resolução de cada aparelho)
             /*Image.asset(

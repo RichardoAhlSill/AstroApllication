@@ -39,11 +39,11 @@ class Menu_AstronomiaState extends State<Menu_Astronomia> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Center(
+                        const Center(
                             child: Text(
                           "Astronomia",
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 32,
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),

@@ -27,11 +27,11 @@ class _IndicacoesPageState extends State<IndicacoesPage> {
         child: ListView(
           children: [
             const Text(
-            'Indicações',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 32),
-          ),
-            SizedBox(height: 24,),
+              'Indicações',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 32),
+            ),
+            SizedBox(height: 24),
             principalListView()
           ],
         ),

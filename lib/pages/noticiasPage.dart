@@ -40,10 +40,10 @@ class _NoticiasPageState extends State<NoticiasPage> {
             children: [
               const Text(
                 'Notícias',
-                style: TextStyle(
-                  fontSize: 35,
-                ),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 32),
               ),
+              const SizedBox(height: 24),
               buildListView(),
             ],
           ),

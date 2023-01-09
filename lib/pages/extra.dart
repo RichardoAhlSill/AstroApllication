@@ -46,13 +46,11 @@ class _ExtraState extends State<Extra> {
                       children: [
                         Center(
                             child: Text(
-                          "Sobre",
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )),
+                              "Sobre",
+                              style: TextStyle(
+                                fontSize: 32,
+                              ),
+                            )),
                         const SizedBox(height: 16),
                         Container(
                           child: Image.asset(
@@ -63,8 +61,8 @@ class _ExtraState extends State<Extra> {
                             padding: const EdgeInsets.only(top: 16),
                             child: Text(
                               'Atualmente o ensino para a área de astronomia e astronáutica começa a ter um apreço maior diante do público em geral. No entanto, apesar de olimpíadas como a OBA (Olimpíada Brasileira de Astronomia e Astronáutica), aquilo que é exposto na internet ainda se vê muito desorganizado, não linkado, por assim dizer.\n\n'
-                              'É justamente para isso que este projeto surge. O AstroAPP, por meio de seus desenvolvedores, busca promover a difusão do conhecimento da astronomia e da astronáutica, tudo num único espaço, num aplicativo completo. E o melhor de tudo: gratuito!\n\n'
-                              'Nossa missão é mostrar para as pessoas a grandiosidade do universo, com toda sua riqueza e esplendor próprios, e tudo que com ele se relaciona. Permitindo uma definição mais subjetiva, é de nossa intenção promover o encanto deste mundo único. Vamos tripular nesse foguete?',
+                                  'É justamente para isso que este projeto surge. O AstroAPP, por meio de seus desenvolvedores, busca promover a difusão do conhecimento da astronomia e da astronáutica, tudo num único espaço, num aplicativo completo. E o melhor de tudo: gratuito!\n\n'
+                                  'Nossa missão é mostrar para as pessoas a grandiosidade do universo, com toda sua riqueza e esplendor próprios, e tudo que com ele se relaciona. Permitindo uma definição mais subjetiva, é de nossa intenção promover o encanto deste mundo único. Vamos tripular nesse foguete?',
                               style: TextStyle(
                                 fontSize: 20,
                               ),
