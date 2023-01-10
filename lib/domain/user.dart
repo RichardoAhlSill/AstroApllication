@@ -46,6 +46,7 @@ class User {
 
   Map<String, dynamic> toApiJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['_id'] = id;
     data['username'] = username;
     data['email'] = email;
     data['password'] = password;
@@ -57,6 +58,7 @@ class User {
   }
 
   User.fromApiJson(Map<String, dynamic> json) {
+    id = json['_id'];
     username = json['name'];
     email = json['email'];
     password = json['password'];
@@ -64,6 +66,5 @@ class User {
     country = json['country'];
     office = json['office'];
     preferenceArea = json['preferenceArea'];
-    id = json['_id'];
   }
 }

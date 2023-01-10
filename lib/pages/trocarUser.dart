@@ -1,15 +1,16 @@
+import 'package:astroapp/domain/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TrocarUser extends StatefulWidget {
-  const TrocarUser({Key? key}) : super(key: key);
+  final User user;
+  const TrocarUser({Key? key, required this.user}) : super(key: key);
 
   @override
   State<TrocarUser> createState() => _TrocarUserState();
 }
 
 class _TrocarUserState extends State<TrocarUser> {
-  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,7 +24,7 @@ class _TrocarUserState extends State<TrocarUser> {
           ),
         ),
         body: Center(
-          child: buildBody(),        
+          child: buildBody(),
         ),
       ),
     );
@@ -32,20 +33,14 @@ class _TrocarUserState extends State<TrocarUser> {
   buildBody() {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: 
-          Container(
-            child: ListView(
-            scrollDirection: Axis.vertical,
-            children: [
-              cardUser(email: 'dbss1@aluno.ifal.edu.br', usuario: 'Daniel'),
-              cardUser(email: 'mfs22@aluno.ifal.edu.br', usuario: 'Felype'),
-              cardUser(email: 'aviao@aluno.ifal.edu.br', usuario: 'Içami'),
-              cardUser(email: 'progamer@aluno.ifal.edu.br', usuario: 'Ricardo'),
-              cardUser(email: 'cristiano@aluno.ifal.edu.br', usuario: 'Vítor'),
-                
-            ],      
-                ),
-          ),
+      child: Container(
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          children: [
+            cardUser(email: widget.user.email, usuario: widget.user.username),
+          ],
+        ),
+      ),
     );
   }
 
@@ -54,7 +49,7 @@ class _TrocarUserState extends State<TrocarUser> {
   cardUser({
     required String email,
     required String usuario,
-  }){
+  }) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
       child: InkWell(

@@ -8,17 +8,22 @@ import 'package:astroapp/pages/loginpage.dart';
 import '../data/bd/user_dao.dart';
 
 class UserPage extends StatefulWidget {
-  User user = UsuariosApi().manterUser();
+  final User user;
+  const UserPage({Key? key, required this.user}) : super(key: key);
 
-  UserPage({
-    Key? key,
-  }) : super(key: key);
+  //get user => null;
 
   @override
+  // ignore: no_logic_in_create_state
   State<UserPage> createState() => _UserPageState();
 }
 
 class _UserPageState extends State<UserPage> {
+  /*void initState() {
+    emailUser = widget.emailUser;
+    super.initState();
+  }*/
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -133,12 +138,8 @@ class _UserPageState extends State<UserPage> {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const TrocarUser(),
-                  ),
-                );
+                print("oi");
+                bodyListView();
               },
               child: Wrap(
                 children: [
@@ -179,6 +180,39 @@ class _UserPageState extends State<UserPage> {
         ),
       ),
     );
+  }
+
+  bodyListView() {
+    try {
+      Future<List<User>> allUsers = UsuariosApi().listarFullUsersApi();
+      return FutureBuilder<List<User>>(
+          future: allUsers,
+          builder: ((context, snapshot) {
+            if (snapshot.hasData) {
+              List<User> allUsers = snapshot.data ?? [];
+
+              return ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: allUsers.length,
+                itemBuilder: (context, index) {
+                  return TrocarUser(
+                    user: allUsers[index],
+                  );
+                },
+              );
+            } else if (snapshot.hasError) {
+              return Center(child: Text("Tem erro aqui, mano"));
+            } else if (!snapshot.hasData) {
+              return Center(child: CircularProgressIndicator());
+            }
+
+            return const Center(child: CircularProgressIndicator());
+          }));
+    } catch (e) {
+      print("Erro: \n\n");
+      print(e);
+    }
   }
 
   deleteUser() {

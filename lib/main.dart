@@ -10,11 +10,12 @@ import 'dart:ui';
 
 //import 'package:url_launcher/url_launcher.dart';
 
-class PostHttpOverrides extends HttpOverrides{
+class PostHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(context){
+  HttpClient createHttpClient(context) {
     return super.createHttpClient(context)
-    ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
 
@@ -23,7 +24,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: HomePage(email: 'dbss1@aluno.ifal.edu.br'),
     ),
   );
 }

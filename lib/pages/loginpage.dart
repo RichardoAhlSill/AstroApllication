@@ -133,16 +133,16 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> onPressed() async {
     if (_formKey.currentState!.validate()) {
-      String user = userController.text;
+      String emailUser = userController.text;
       String pwd = passwordController.text;
 
-      User usuario = await UsuariosApi().autenticar(user, pwd);
+      User usuario = await UsuariosApi().autenticar(emailUser, pwd);
       if (usuario.age.isNotEmpty) {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) {
-              return HomePage();
+              return HomePage(email: emailUser);
             },
           ),
         );

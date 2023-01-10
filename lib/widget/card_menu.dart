@@ -48,29 +48,29 @@ class _CardMenu extends State<CardMenu> {
           ],
         ),
         onTap: () {
-          Widget rota = HomePage();
+          Widget rota = HomePage(email: 'mfs22@aluno.ifal.edu.br');
           switch (widget.menu_astro.rota) {
             case 'Angulos_De_Euler()':
               rota = Angulos_De_Euler();
               break;
 
-              case 'Aplicacoes_Da_Astronautica()':
+            case 'Aplicacoes_Da_Astronautica()':
               rota = Aplicacoes_Da_Astronautica();
               break;
 
-              case 'Introducao_Astronautica()':
+            case 'Introducao_Astronautica()':
               rota = Introducao_Astronautica();
               break;
 
-              case 'Constelacoes()':
+            case 'Constelacoes()':
               rota = Constelacoes();
               break;
 
-              case 'Planetas()':
+            case 'Planetas()':
               rota = Planetas();
               break;
 
-              case 'Introducao_Astronomia()':
+            case 'Introducao_Astronomia()':
               rota = Introducao_Astronomia();
               break;
             default:

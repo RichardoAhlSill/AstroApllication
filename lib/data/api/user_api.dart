@@ -19,8 +19,17 @@ class UsuariosApi {
   String baseUrl = "https://api-production-b057.up.railway.app";
 
   Future<List<User>> listarFullUsersApi() async {
-    var url = Uri.parse(baseUrl + "users");
-    List<User> users = <User>[];
+    var url = Uri.parse(baseUrl + "/users");
+    late List<User> users = <User>[];
+
+    var response = await http.get(url);
+    var result = jsonDecode(response.body);
+
+    for (var json in result) {
+      User user = User.fromApiJson(json);
+      users.add(user);
+    }
+
     return users;
   }
 
@@ -81,57 +90,64 @@ class UsuariosApi {
     return logado;
   }
 
-  Future<Map<String, dynamic>> listEspecificUserApi(String emailUser) async {
+  Future<User> listEspecificUserApi(String emailUser) async {
     String id = await filtrarIdPorNome(emailUser);
+    print(id);
 
-    var url = Uri.parse(baseUrl + "users/$id");
+    var url = Uri.parse(baseUrl + "/users/$id");
     var response = await http.get(url);
-    User userString;
-    userString = User(
-        id: "8888",
-        username: 'Marcos',
-        email: 'mfs',
-        password: '123',
-        age: '18',
-        country: 'Brasil',
-        office: 'Estudante',
-        preferenceArea: 'Astronomia');
 
-    Map<String, dynamic> user = userString.toApiJson();
-
+    //Map<String, dynamic> user = userString.toApiJson();
+    late User userEspecific;
     try {
       if (response.statusCode == 200) {
-        var result = (jsonDecode(utf8.decode(response.bodyBytes)));
+        var result = jsonDecode(response.body);
 
         print(result);
 
-        /*for (var json in result) {
-          user = User.fromApiJson(json);
-        }*/
+        userEspecific = User.fromApiJson(result);
       }
     } catch (e) {
-      throw Exception("Erro");
+      print('Erro tal: \n\n');
+      print(e);
     }
-    return user;
+    return userEspecific;
   }
 
   Future<String> filtrarIdPorNome(String emailUser) async {
-    var urlNome = Uri.parse(baseUrl + "users/");
+    var urlNome = Uri.parse(baseUrl + "/users/");
     var response = await http.get(urlNome);
     String nome;
+    String id = "";
     if (response.statusCode == 200) {
       var result = (jsonDecode(utf8.decode(response.bodyBytes)));
 
-      print(result);
+      //print(result);
 
+      List<User> users = <User>[];
+      //List<Map<String, dynamic>> user2 = [];
+      late User user;
       for (var json in result) {
-        // fazer um if
+        //print(json);
+        user = User.fromApiJson(json);
+        //Map<String, dynamic> user3 = user.toApiJson();
+        //user2.add(user3);
+        users.add(user);
       }
 
+      //Map<String, dynamic> user2 = user.toApiJson();
+      for (int i = 0; i < users.length; i++) {
+        //print(user2);
+        print(users[i].email);
+        if (users[i].email == emailUser) {
+          id = users[i].id;
+          return id;
+        }
+      }
       /*for (var json in result) {
           user = User.fromApiJson(json);
         }*/
     }
-    return 'oi';
+    return id;
   }
 }

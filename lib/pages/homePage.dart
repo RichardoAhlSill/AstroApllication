@@ -25,7 +25,8 @@ import 'assuntosQuest_page.dart';
 
 class HomePage extends StatefulWidget {
   User user = UsuariosApi().manterUser();
-  HomePage({Key? key}) : super(key: key);
+  final String email;
+  HomePage({Key? key, required this.email}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -34,9 +35,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Future<List<Noticias>> listaNoticias = NoticiasDao().getCardNoticias();
   Future<List<Topicos>> listaTopicos = BD.getCardTopicos();
+  //late String emailUser = "marcos";
 
   @override
   Widget build(BuildContext context) {
+    Future<User> user = UsuariosApi().listEspecificUserApi(widget.email);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 18, 30, 138),
@@ -91,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               //widget.user.username,
-                              'Marcos',
+                              widget.user.username,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 16,
@@ -99,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Text(
                               //widget.user.email,
-                              'mfs22@aluno.ifal.edu.br',
+                              widget.email,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 12,
@@ -111,13 +114,15 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   onTap: () async {
-                    Map<String, dynamic> user =
-                        await UsuariosApi().listEspecificUserApi('5464645');
+                    //Map<String, dynamic> user =
+                    String email = 'dbss1@aluno.ifal.edu.br';
+                    User user = await UsuariosApi().listEspecificUserApi(email);
                     // ignore: avoid_print
-                    print(user);
+                    //print(user);
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => logado()),
+                      MaterialPageRoute(
+                          builder: (context) => UserPage(user: user)),
                     ); //pensar
                   },
                 ),
@@ -457,11 +462,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  logado() {
+  /*logado() {
     if (widget.user.age != "") {
-      return UserPage();
+      return UserPage(
+        user: user,
+      );
     } else {
       return LoginPage();
     }
-  }
+  }*/
 }
