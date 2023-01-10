@@ -1,31 +1,84 @@
 import 'dart:convert';
 import 'dart:async';
-
+import 'dart:ffi';
+import 'package:astroapp/data/bd/user_dao.dart';
 import 'package:astroapp/domain/user.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
+
+User logado = User(
+    id: "",
+    username: "",
+    password: "",
+    email: "",
+    age: "",
+    country: "",
+    office: "",
+    preferenceArea: "");
 
 class UsuariosApi {
-  String baseUrl = "https://api-production-b057.up.railway.app/";
+  String baseUrl = "https://api-production-b057.up.railway.app";
 
   Future<List<User>> listarFullUsersApi() async {
     var url = Uri.parse(baseUrl + "users");
+    List<User> users = <User>[];
+    return users;
+  }
+
+  autenticar(user1, pwd) async {
+    var url = Uri.parse(baseUrl + "/users");
     var response = await http.get(url);
 
-    List<User> listaUser = <User>[];
     try {
       if (response.statusCode == 200) {
         var result = (jsonDecode(utf8.decode(response.bodyBytes)));
 
         for (var json in result) {
           User user = User.fromApiJson(json);
-          listaUser.add(user);
+
+          if ((user1 == user.email) && (pwd == user.password)) {
+            logado = user;
+            return user;
+          }
         }
       }
     } catch (e) {
-      throw Exception("Erro");
+      throw Exception(e);
     }
-    return listaUser;
+  }
+
+  cadastrar({required User user}) async {
+    try {
+      var response =
+          await http.post(Uri.parse(baseUrl + "/users/create"), body: {
+        "name": user.username,
+        "email": user.email,
+        "password": user.password,
+        "age": user.age,
+        "country": user.country,
+        "office": user.office,
+        "preferenceArea": user.preferenceArea,
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  atualizarUser({required User user}) async {
+    var url = Uri.parse(baseUrl + "/users/create/${user.id}");
+    await http.put(url, body: {
+      "name": user.username,
+      "email": user.email,
+      "password": user.password,
+      "age": user.age,
+      "country": user.country,
+      "office": user.office,
+      "preferenceArea": user.preferenceArea,
+    });
+    logado = user;
+  }
+
+  manterUser() {
+    return logado;
   }
 
   Future<Map<String, dynamic>> listEspecificUserApi(String emailUser) async {
@@ -35,7 +88,8 @@ class UsuariosApi {
     var response = await http.get(url);
     User userString;
     userString = User(
-        name: 'Marcos',
+        id: "8888",
+        username: 'Marcos',
         email: 'mfs',
         password: '123',
         age: '18',
